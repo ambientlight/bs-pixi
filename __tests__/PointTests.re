@@ -1,5 +1,5 @@
 open Jest;
-open Pixi.Point;
+open Point;
 
 describe("Point", () => {
   open Expect;
