@@ -12,14 +12,16 @@ class type _t = [@bs] {
   /**
     Creates a clone of this point
 
+      @param (optional) cb callback when changed
+      @param (optional) scope owner of callback
       @return a copy of the point
    */
-  pub clone: unit => Js.t(_t);
+  pub clone: (Js.Null.t(unit => unit), Js.Null.t(Js.t({..}))) => Js.t(_t);
 
   /**
     Copies x and y from the given point
     
-      @deprecated consider using IPoint.copyFrom instead for ObservablePoint support
+      @deprecated consider using IPoint.copyFrom instead for Point support
       @see </PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
       @param p The point to copy from
       @return itself
@@ -29,7 +31,7 @@ class type _t = [@bs] {
   /**
     Copies x and y into the given point
     
-      @deprecated consider using IPoint.copyTo instead for ObservablePoint support
+      @deprecated consider using IPoint.copyTo instead for Point support
       @see </PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
       @param p The point to copy
       @return Given point with values updated
@@ -39,8 +41,8 @@ class type _t = [@bs] {
   /**
     Returns true if the given point is equal to this point
 
-      @deprecated consider using IPoint.equals instead for ObservablePoint support
-      @see </PIXI/IPoint-PIXI/#val-equals> Point.equals
+      @deprecated consider using IPoint.equals instead for Point support
+      @see </PIXI/IPoint-PIXI/#val-equals> IPoint.equals
       @param p The point to check
       @return Whether the given point equal to this point
    */
@@ -51,8 +53,8 @@ class type _t = [@bs] {
     Sets the point to a new x and y position. 
     If y is omitted, both x and y will be set to x.
 
-      @deprecated consider using Point.set instead
-      @see </docs/FormationEmbedCore/PIXI-Formationembedcore/Point/#val-set> Point.set
+      @deprecated consider using ObservablePoint.set instead
+      @see </PIXI/ObservablePoint-PIXI/#val-set> ObservablePoint.set
       @param x position of the point on the x axis
       @param y position of the point on the y axis
    */
@@ -62,18 +64,22 @@ class type _t = [@bs] {
 /**
   The Point object represents a location in a two-dimensional coordinate system, 
   where x represents the horizontal axis and y represents the vertical axis.
+  
+  An ObservablePoint is a point that triggers a callback when the point's position is changed.
  */
 type t = Js.t(_t);
 
 /**
-  creates a new point
+  creates a new observable point
 
+    @param cb callback when changed
+    @param scope owner of callback
     @param x position of the point on the x axis
     @param y position of the point on the y axis
     @return new point
  */
 [@bs.module "pixi.js"][@bs.new]
-external create: (~x: float=?, ~y: float=?, unit) => Js.t(#_t) = "Point";
+external create: (~cb: unit => unit, ~scope: 'a=?, ~x: float=?, ~y: float=?, unit) => Js.t(#_t) = "ObservablePoint";
 
 /**
   position of the point on the x axis
@@ -98,15 +104,17 @@ external create: (~x: float=?, ~y: float=?, unit) => Js.t(#_t) = "Point";
 /**
   Creates a clone of this point
 
+    @param cb callback when changed
+    @param scope owner of callback
     @return a copy of the point
  */
 [@bs.send]
-external clone: Js.t(#_t) => Js.t(#_t) = "clone";
+external clone: (Js.t(#_t), ~cb:(unit=>unit)=?, ~scope:'a=?, unit) => Js.t(#_t) = "clone";
 
 /**
   Copies x and y from the given point
     
-    @deprecated consider using IPoint.copyFrom instead for ObservablePoint support
+    @deprecated consider using IPoint.copyFrom instead for Point support
     @see </PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
     @param p The point to copy from
     @return itself
@@ -117,7 +125,7 @@ external copyFrom: (Js.t(#_t), ~p: Js.t(#_t)) => Js.t(#_t) = "copyFrom";
 /**
   Copies x and y into the given point
     
-    @deprecated consider using IPoint.copyTo instead for ObservablePoint support
+    @deprecated consider using IPoint.copyTo instead for Point support
     @see </PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
     @param p The point to copy
     @return Given point with values updated
@@ -128,7 +136,7 @@ external copyTo: (Js.t(#_t), ~p: Js.t(#_t)) => Js.t(#_t) = "copyTo";
 /**
   Returns true if the given point is equal to this point
 
-    @deprecated consider using IPoint.equals instead for ObservablePoint support
+    @deprecated consider using IPoint.equals instead for Point support
     @see </PIXI/IPoint-PIXI/#val-equals> IPoint.equals
     @param p The point to check
     @return Whether the given point equal to this point
