@@ -173,8 +173,7 @@ external empty: Js.t(#_t) = "EMPTY";
 [@bs.get] external getTop: Js.t(#_t) => float = "top";
 
 
-[@bs.get]
-external _getType: t => int = "type";
+[@bs.get] external _getType: Js.t(#_t) => int = "type";
 
 /**
   The type of the object, mainly used to avoid instanceof checks
