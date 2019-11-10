@@ -30,7 +30,7 @@ jobs:
         ocaml_version: 4.02.3+buckle-master
     - name: install odoc
       run: |
-        opam install odoc
+        opam install odoc --yes
     - name: install esy
       run: |
         npm install -g esy@0.5.6
