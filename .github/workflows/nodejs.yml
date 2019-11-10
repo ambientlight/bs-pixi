@@ -28,3 +28,11 @@ jobs:
       uses: fangyi-zhou/actions-ocaml@v1
       with:
         ocaml_version: 4.02.3+buckle-master
+    - name: install esy
+      run: |
+        npm install -g esy@0.5.6
+    - name: clone and build bsdoc
+      run: |
+        git clone https://github.com/reuniverse/bsdoc.git
+        cd bsdoc
+        esy build
