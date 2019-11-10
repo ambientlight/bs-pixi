@@ -35,4 +35,5 @@ jobs:
       run: |
         git clone https://github.com/reuniverse/bsdoc.git
         cd bsdoc
+        esy install
         esy build
