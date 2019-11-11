@@ -44,7 +44,7 @@ jobs:
     - name: Generate and deploy docs to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3-beta
       env:
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: docs
