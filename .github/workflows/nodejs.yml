@@ -42,9 +42,9 @@ jobs:
         esy release
         find _release/_export/ -iname "bsdoc*" -exec tar -zxvf {} --strip-components 1 \;
     - name: Generate and deploy docs to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3-beta
+      uses: JamesIves/github-pages-deploy-action@2.0.3
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: docs
