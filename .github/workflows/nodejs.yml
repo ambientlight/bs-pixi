@@ -1,6 +1,12 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+    branches:    
+      - master
+    tags:        
+      - v1
+      - v1.*
 
 jobs:
   build:
@@ -41,6 +47,7 @@ jobs:
         esy install
         esy release
         find _release/_export/ -iname "bsdoc*" -exec tar -zxvf {} --strip-components 1 \;
+    - name: generate docs
     - name: Generate and deploy docs to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@2.0.3
       env:
@@ -48,4 +55,3 @@ jobs:
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: docs
-        BUILD_SCRIPT: ./bsdoc/bin/bsdoc build -v --debug PIXI
