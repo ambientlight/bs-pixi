@@ -39,7 +39,8 @@ jobs:
         git clone https://github.com/reuniverse/bsdoc.git
         cd bsdoc
         esy install
-        esy npm-release
+        esy release
+        find _release/_export/ -iname "bsdoc*" -exec tar -zxvf {} --strip-components 1 \;
     - name: generate docs
       run: |
-        ./bsdoc/_release/bin/bsdoc -v --debug PIXI
+        ./bsdoc/bin/bsdoc -v --debug PIXI
