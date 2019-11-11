@@ -40,3 +40,6 @@ jobs:
         cd bsdoc
         esy install
         esy npm-release
+    - name: generate docs
+      run: |
+        ./bsdoc/_release/bin/bsdoc -v --debug PIXI
