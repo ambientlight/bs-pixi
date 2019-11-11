@@ -1,7 +1,5 @@
 name: Node CI
-
-on: [push]        
-
+on: [push]
 jobs:
   build:
     name: test job
