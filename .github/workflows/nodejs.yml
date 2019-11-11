@@ -41,11 +41,8 @@ jobs:
         esy install
         esy release
         find _release/_export/ -iname "bsdoc*" -exec tar -zxvf {} --strip-components 1 \;
-    - name: generate docs
-      run: |
-        ./bsdoc/bin/bsdoc build -v --debug PIXI
-    - name: Deploy Docs to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@2.0.3
+    - name: Generate and deploy docs to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3-beta
       env:
         ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master
