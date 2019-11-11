@@ -1,5 +1,9 @@
 name: Node CI
-on: [push]
+on:
+  push:
+    branches:    
+      - master  
+
 jobs:
   build:
     name: test job
@@ -40,6 +44,8 @@ jobs:
         esy release
         find _release/_export/ -iname "bsdoc*" -exec tar -zxvf {} --strip-components 1 \;
     - name: generate docs
+      run: |
+        ./bsdoc/bin/bsdoc build -v --debug PIXI
     - name: Generate and deploy docs to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@2.0.3
       env:
