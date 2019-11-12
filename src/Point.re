@@ -52,7 +52,7 @@ class type _t = [@bs] {
     If y is omitted, both x and y will be set to x.
 
       @deprecated consider using Point.set instead
-      @see </docs/FormationEmbedCore/PIXI-Formationembedcore/Point/#val-set> Point.set
+      @see </bs-pixi/PIXI/Point-PIXI/#val-set> Point.set
       @param x position of the point on the x axis
       @param y position of the point on the y axis
    */
