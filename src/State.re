@@ -10,7 +10,7 @@ class type _t = [@bs] {
     Setting this mode to anything other than NO_BLEND will automatically switch blending on
 
       @deprecated consider using State.getBlendMode instead
-      @see </PIXI/State-PIXI/#val-getBlendMode> State.getBlendMode
+      @see </bs-pixi/PIXI/State-PIXI/#val-getBlendMode> State.getBlendMode
    */
   [@bs.set] pub blendMode: int;
 

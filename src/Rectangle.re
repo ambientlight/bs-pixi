@@ -46,7 +46,7 @@ class type _t = [@bs] {
     Enlarges rectangle that way its corners lie on grid
 
       @deprecated consider using Rectangle.ceil instead
-      @see </PIXI/Rectangle-PIXI/#val-ceil> Rectangle.ceil
+      @see </bs-pixi/PIXI/Rectangle-PIXI/#val-ceil> Rectangle.ceil
       @param (optional) resolution resolution
       @param (optional) eps eps
       @return itself
@@ -106,7 +106,7 @@ class type _t = [@bs] {
     If paddingY is omitted, both paddingX and paddingY will be set to paddingX.
 
       @deprecated Consider using Rectangle.pad instead
-      @see </PIXI/Rectangle-PIXI/#val-pad> Rectangle.pad
+      @see </bs-pixi/PIXI/Rectangle-PIXI/#val-pad> Rectangle.pad
       @param paddingX The horizontal padding amount
       @param paddingY The vertical padding amount
       @return itself

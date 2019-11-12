@@ -8,7 +8,7 @@ class type _t = [@bs] {
     listeners registered for a given event
 
       @deprecated Consider using EventEmitter.listeners if Symbol support needed
-      @see </PIXI/EventEmitter-PIXI/#val-listeners> EventEmitter.listeners
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-listeners> EventEmitter.listeners
       @param event The event name
    */
   pub listeners: string => array(Js.t({..}) => unit);
@@ -17,7 +17,7 @@ class type _t = [@bs] {
     the number of listeners listening to a given event
 
       @deprecated Consider using EventEmitter.listeners if Symbol support needed.
-      @see </PIXI/EventEmitter-PIXI/#val-listenerCount> EventEmitter.listenerCount
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-listenerCount> EventEmitter.listenerCount
       @param event The event name
       @return the number of listeners listening to a given event
    */
@@ -27,7 +27,7 @@ class type _t = [@bs] {
     Calls each of the listeners registered for a given event
 
       @deprecated Consider using EventEmitter.emit if Symbol support needed.
-      @see </PIXI/EventEmitter-PIXI/#val-listenerCount> EventEmitter.emit
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-listenerCount> EventEmitter.emit
       @param event The event name
       @return true if the event had listeners, else false
    */
@@ -37,7 +37,7 @@ class type _t = [@bs] {
     Add a listener for a given event
 
       @deprecated Consider using EventEmitter.on
-      @see </PIXI/EventEmitter-PIXI/#val-on> EventEmitter.on
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-on> EventEmitter.on
       @param event The event name
       @param fn The listener function
       @param context (optional)The context to invoke the listener with
@@ -50,7 +50,7 @@ class type _t = [@bs] {
     Add a listener for a given event
 
       @deprecated Consider using EventEmitter.on
-      @see </PIXI/EventEmitter-PIXI/#val-on> EventEmitter.on
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-on> EventEmitter.on
       @param event The event name
       @param fn The listener function
       @param context (optional)The context to invoke the listener with
@@ -62,7 +62,7 @@ class type _t = [@bs] {
     Add a one-time listner for a given event
 
       @deprecated Consider using EventEmitter.on
-      @see </PIXI/EventEmitter-PIXI/#val-once> EventEmitter.on
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-once> EventEmitter.on
       @param event The event name
       @param fn The listener function
       @param context (optional)The context to invoke the listener with
@@ -74,7 +74,7 @@ class type _t = [@bs] {
     Remove the listeners of a given even
 
       @deprecated Consider using EventEmitter.removeListener
-      @see </PIXI/EventEmitter-PIXI/#val-removeListener> EventEmitter.removeListener
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-removeListener> EventEmitter.removeListener
       @param event The event name
       @param fn (optional) Only remove the listeners that match this function
       @param context (optional) Only remove the listeners that have this context
@@ -87,7 +87,7 @@ class type _t = [@bs] {
     Remove the listeners of a given even
 
       @deprecated Consider using EventEmitter.removeListener
-      @see </PIXI/EventEmitter-PIXI/#val-removeListener> EventEmitter.removeListener
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-removeListener> EventEmitter.removeListener
       @param event The event name
       @param fn (optional) Only remove the listeners that match this function
       @param context (optional) Only remove the listeners that have this context
@@ -100,7 +100,7 @@ class type _t = [@bs] {
     Remove all listeners, or those of the specified event
 
       @deprecated Consider using EventEmitter.removeAllListeners if Symbol support is needed
-      @see </PIXI/EventEmitter-PIXI/#val-removeAllListeners> EventEmitter.removeAllListeners
+      @see </bs-pixi/PIXI/EventEmitter-PIXI/#val-removeAllListeners> EventEmitter.removeAllListeners
       @param event The event name
       @return itself
    */

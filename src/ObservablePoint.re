@@ -22,7 +22,7 @@ class type _t = [@bs] {
     Copies x and y from the given point
     
       @deprecated consider using IPoint.copyFrom instead for Point support
-      @see </PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
+      @see </bs-pixi/PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
       @param p The point to copy from
       @return itself
    */
@@ -32,7 +32,7 @@ class type _t = [@bs] {
     Copies x and y into the given point
     
       @deprecated consider using IPoint.copyTo instead for Point support
-      @see </PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
+      @see </bs-pixi/PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
       @param p The point to copy
       @return Given point with values updated
    */
@@ -42,7 +42,7 @@ class type _t = [@bs] {
     Returns true if the given point is equal to this point
 
       @deprecated consider using IPoint.equals instead for Point support
-      @see </PIXI/IPoint-PIXI/#val-equals> IPoint.equals
+      @see </bs-pixi/PIXI/IPoint-PIXI/#val-equals> IPoint.equals
       @param p The point to check
       @return Whether the given point equal to this point
    */
@@ -54,7 +54,7 @@ class type _t = [@bs] {
     If y is omitted, both x and y will be set to x.
 
       @deprecated consider using ObservablePoint.set instead
-      @see </PIXI/ObservablePoint-PIXI/#val-set> ObservablePoint.set
+      @see </bs-pixi/PIXI/ObservablePoint-PIXI/#val-set> ObservablePoint.set
       @param x position of the point on the x axis
       @param y position of the point on the y axis
    */
@@ -115,7 +115,7 @@ external clone: (Js.t(#_t), ~cb:(unit=>unit)=?, ~scope:'a=?, unit) => Js.t(#_t) 
   Copies x and y from the given point
     
     @deprecated consider using IPoint.copyFrom instead for Point support
-    @see </PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
+    @see </bs-pixi/PIXI/IPoint-PIXI/#val-copyFrom> IPoint.copyFrom
     @param p The point to copy from
     @return itself
  */
@@ -126,7 +126,7 @@ external copyFrom: (Js.t(#_t), ~p: Js.t(#_t)) => Js.t(#_t) = "copyFrom";
   Copies x and y into the given point
     
     @deprecated consider using IPoint.copyTo instead for Point support
-    @see </PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
+    @see </bs-pixi/PIXI/IPoint-PIXI/#val-copyTo> IPoint.copyTo
     @param p The point to copy
     @return Given point with values updated
  */
@@ -137,7 +137,7 @@ external copyTo: (Js.t(#_t), ~p: Js.t(#_t)) => Js.t(#_t) = "copyTo";
   Returns true if the given point is equal to this point
 
     @deprecated consider using IPoint.equals instead for Point support
-    @see </PIXI/IPoint-PIXI/#val-equals> IPoint.equals
+    @see </bs-pixi/PIXI/IPoint-PIXI/#val-equals> IPoint.equals
     @param p The point to check
     @return Whether the given point equal to this point
  */

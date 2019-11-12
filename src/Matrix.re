@@ -3,7 +3,7 @@
   doesn't allow recursive dependencies on JS-class bindings, so references to PIXI.Transform.t
   are rendered as anonymous types in Matrix context
 
-  @see </PIXI/MatrixUtils-PIXI/> MatrixUtils
+  @see </bs-pixi/PIXI/MatrixUtils-PIXI/> MatrixUtils
  */
 type transformOpaque;
 
@@ -51,7 +51,7 @@ class type _t = [@bs] {
     Can be used to go from a child's coordinate space to the world coordinate space. (e.g. rendering)
 
       @deorecated consider using Matrix.apply instead
-      @see </PIXI/Matrix-PIXI/#val-apply> Matrix.apply
+      @see </bs-pixi/PIXI/Matrix-PIXI/#val-apply> Matrix.apply
       @param pos The origin
       @param newPos (optional) The point that the new position is assigned to (allowed to be same as input)
       @return The new point, transformed through this matrix
@@ -63,7 +63,7 @@ class type _t = [@bs] {
     Can be used to go from the world coordinate space to a child's coordinate space. (e.g. input)
 
       @deorecated consider using Matrix.applyInverse instead
-      @see </PIXI/Matrix-PIXI/#val-applyInverse> Matrix.applyInverse
+      @see </bs-pixi/PIXI/Matrix-PIXI/#val-applyInverse> Matrix.applyInverse
       @param pos The origin
       @param newPos (optional) The point that the new position is assigned to (allowed to be same as input)
       @return The new point, transformed through this matrix    
@@ -97,7 +97,7 @@ class type _t = [@bs] {
     Decomposes the matrix (x, y, scaleX, scaleY, and rotation) and sets the properties on to a transform.
 
       @deprecated Consider using MatrixUtils.decompose instead
-      @see </PIXI/MatrixUtils-PIXI/#val-decompose> MatrixUtils.decompose
+      @see </bs-pixi/PIXI/MatrixUtils-PIXI/#val-decompose> MatrixUtils.decompose
       @param transform The transform to apply the properties to
       @return The transform with the newly applied properties
    */
@@ -184,7 +184,7 @@ class type _t = [@bs] {
     Creates an array from the current Matrix object
 
       @deprecated Consider using Matrix.toArray
-      @see </PIXI/Matrix-PIXI/#val-toArray> Matrix.toArray
+      @see </bs-pixi/PIXI/Matrix-PIXI/#val-toArray> Matrix.toArray
       @param transpose Whether we need to transpose the matrix or not
       @param out (optional) If provided the array will be assigned to out
       @return the newly created array which contains the matrix
@@ -357,7 +357,7 @@ external copyTo: (Js.t(#_t), ~matrix: Js.t(#_t)) => Js.t(#_t) = "copyTo";
   Decomposes the matrix (x, y, scaleX, scaleY, and rotation) and sets the properties on to a transform.
 
     @deprecated Consider using MatrixUtils.decompose instead
-    @see </PIXI/MatrixUtils-PIXI/#val-decompose> MatrixUtils.decompose
+    @see </bs-pixi/PIXI/MatrixUtils-PIXI/#val-decompose> MatrixUtils.decompose
     @param transform The transform to apply the properties to
     @return The transform with the newly applied properties
   */
