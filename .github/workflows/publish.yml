@@ -1,0 +1,30 @@
+name: Publish to NPM
+on:
+  push:
+    tags:
+      - *
+
+jobs:
+  buildAndPublish:
+    name: test and deploy to npm
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, test and publish
+      run: |
+        npm install
+        npm run build
+        npm run test
+        npm publish
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
