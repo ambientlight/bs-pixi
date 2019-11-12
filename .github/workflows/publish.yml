@@ -1,6 +1,9 @@
 name: Publish to NPM
 on:
-  push: [tags]
+  push:
+    tags:
+      - 0.*
+      - 1.*
 
 jobs:
   buildAndPublish:
