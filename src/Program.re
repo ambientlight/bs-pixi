@@ -67,4 +67,4 @@ external defaultVertexSrc: string = "defaultVertexSrc";
     @return a shiny new Pixi shader!
  */
 [@bs.module "pixi.js"][@bs.scope "Program"]
-external from: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~uniforms: Js.t({..})=?, unit) => t = "from";
+external from: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~name: string=?, unit) => t = "from";

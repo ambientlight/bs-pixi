@@ -57,7 +57,7 @@ type t = Js.t(_t);
     @param uniforms Custom uniforms to use to augment the built-in ones
  */
 [@bs.module "pixi.js"][@bs.new]
-external create: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~uniforms: Js.t({..})=?, unit) => Js.t(#_t) = "Filter";
+external create: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~uniforms: 'a=?, unit) => Js.t(#_t) = "Filter";
 
 /**
   The default fragment shader source
@@ -75,7 +75,7 @@ external defaultVertexSrc: string = "defaultVertexSrc";
   Used for caching shader IDs
  */
 [@bs.val][@bs.module "pixi.js"][@bs.scope "Filter"]
-external sourceKeyMap: Js.t({..}) = "SOURCE_KEY_MAP";
+external sourceKeyMap: 'a = "SOURCE_KEY_MAP";
 
 //TODO: getters/setters
 //TODO: FilterSystem / Texture / RenderTexture
