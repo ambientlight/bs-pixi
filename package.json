@@ -1,12 +1,17 @@
 {
     "name": "bs-pixi",
     "version": "0.1.0",
+    "description": "buckleScript bindings for PIXI v5",
     "scripts": {
         "build": "./node_modules/.bin/bsb -make-world",
         "clean": "./node_modules/.bin/bsb -clean",
         "dev": "./node_modules/.bin/bsb -make-world -w",
         "docs": "bsdoc build -v --debug PIXI",
         "test": "./node_modules/.bin/jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ambientlight/bs-pixi.git"
     },
     "keywords": [
         "pixi",
