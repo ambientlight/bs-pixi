@@ -21,4 +21,4 @@ let x = point##x;
 let x = point |. PIXI.Point.getX;
 ```
 
-But please note there are few limitations when using js-object methods: no support for overloaded method args, labeled optional args, currying, you will often see optionals arguments are commonly wrapped into `Js.Undefined.t` for this reason. So documentation will explicitly recommend you to use module-level conterpart.
+But please note there are few limitations when using js-object methods: no support for overloaded method args, labeled optional args, currying, you will  see optionals arguments wrapped into `Js.Undefined.t` for this reason. So documentation will explicitly recommend you to use module-level conterpart.
