@@ -67,15 +67,8 @@ let createOptions = (
   ()
 );
 
-/**
-  creates a new base texture
-
-    @see </bs-pixi/PIXI/BaseTexture-PIXI/#val-createOptions> for options BaseTexture.createOptions
-    @param resource The current resource to use, for things that aren't Resource objects, will be converted into a Resource.
-    @param options collection of options
- */
 [@bs.module "pixi.js"][@bs.new]
-external create: (
+external _create: (
   ~resource: [@bs.unwrap] [
     | `Resource(Resource.t) 
     | `String(string)
@@ -86,6 +79,15 @@ external create: (
   ~options: 'a=?,
   unit
 ) => Js.t(#C1.baseTexture) = "BaseTexture";
+
+/**
+  creates a new base texture
+
+    @see </bs-pixi/PIXI/BaseTexture-PIXI/#val-createOptions> for options BaseTexture.createOptions
+    @param resource The current resource to use, for things that aren't Resource objects, will be converted into a Resource.
+    @param options collection of options
+ */
+let create = (~resource, ~options=createOptions(()), ()) => _create(~resource, ~options, ());
 
 /**
   number of the texture batch, used by multi-texture renderers    

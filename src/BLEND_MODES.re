@@ -1,3 +1,6 @@
+/**
+  Various blend modes supported by PIXI.
+ */
 [@bs.deriving jsConverter]
 type t =
   | [@bs.as 0] Normal

@@ -1,3 +1,11 @@
+/**
+  Mipmap filtering modes that are supported by pixi.
+  The PIXI.settings.MIPMAP_TEXTURES affects default texture filtering. 
+  Mipmaps are generated for a baseTexture if its mipmap field is ON, or its POW2 and texture dimensions are powers of 2. 
+  Due to platform restriction, ON option will work like POW2 for webgl-1.
+
+  This property only affects WebGL.
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 0] None

@@ -1,3 +1,6 @@
+/**
+  Constant to identify the Renderer Type
+ */
 [@bs.deriving jsConverter]
 type t =
   | [@bs.as 0] Unknown

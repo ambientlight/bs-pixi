@@ -1,3 +1,6 @@
+/**
+  Various GL texture/resources formats
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 6408] RGBA

@@ -114,6 +114,9 @@ class type _t = [@bs] {
   pub updateUvs: unit => unit;
 };
 
+/**
+  Various GL target types
+ */
 type t = Js.t(_t);
 
 /**

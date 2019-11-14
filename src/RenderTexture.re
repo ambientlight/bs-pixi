@@ -30,6 +30,14 @@ class type _t = [@bs] {
   pub setResolution: float => unit;
 };
 
+/**
+  A RenderTexture is a special texture that allows any PixiJS display object to be rendered to it.
+  Hint: All DisplayObjects (i.e. Sprites) that render to a RenderTexture 
+  should be preloaded otherwise black rectangles will be drawn instead.
+
+  Hint-2: The actual memory allocation will happen on first render. 
+  You shouldn't create renderTextures each frame just to delete them after, try to reuse them.
+ */
 type t = Js.t(_t);
 
 [@bs.obj] external _createOptions: (
@@ -69,17 +77,19 @@ external create: (
   unit
 ) => Js.t(#_t) = "RenderTexture";
 
+[@bs.val][@bs.module "pixi.js"][@bs.scope "RenderTexture"]
+external _create_: (
+  ~options: 'a=?,
+  unit
+) => Js.t(#_t) = "create";
+
 /**
   A short hand way of creating a render texture
 
     @see </bs-pixi/PIXI/RenderTexture-PIXI/#val-createOptions> for options RenderTexture.createOptions
     @param options collection of options
  */
-[@bs.val][@bs.module "pixi.js"][@bs.scope "RenderTexture"]
-external create_: (
-  ~options: 'a=?,
-  unit
-) => Js.t(#_t) = "create";
+let create_ = (~options=createOptions(()), ()) => _create_(~options, ());
 
 /**
   Stores sourceFrame when this texture is inside current filter stack. 

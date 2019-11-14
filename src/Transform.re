@@ -54,6 +54,9 @@ class type _t = [@bs] {
   pub updateTransform: Js.t(_t) => unit;
 };
 
+/**
+  Transform that takes care about its versions
+ */
 type t = Js.t(_t);
 
 /**

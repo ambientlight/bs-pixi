@@ -31,6 +31,11 @@ class type _t = [@bs] {
   pub resize: (float, float) => unit;
 };
 
+/**
+  A BaseRenderTexture is a special texture that allows any PixiJS display object to be rendered to it.
+  Hint: All DisplayObjects (i.e. Sprites) that render to a BaseRenderTexture should be preloaded 
+  otherwise black rectangles will be drawn instead.
+ */
 type t = Js.t(_t);
 
 [@bs.obj] external _createOptions: (
@@ -63,17 +68,19 @@ let createOptions = (
   ()
 );
 
+[@bs.module "pixi.js"][@bs.new]
+external _create: (
+  ~options: 'a=?,
+  unit
+) => Js.t(#C1.baseTexture) = "BaseRenderTexture";
+
 /**
   creates a new base render texture
 
     @see </bs-pixi/PIXI/BaseRenderTexture-PIXI/#val-createOptions> for options BaseRenderTexture.createOptions
     @param options collection of options
  */
-[@bs.module "pixi.js"][@bs.new]
-external create: (
-  ~options: 'a=?,
-  unit
-) => Js.t(#C1.baseTexture) = "BaseRenderTexture";
+let create = (~options = createOptions(()), ()) => _create(~options, ());
 
 /**
   The data structure for the filters

@@ -1,3 +1,6 @@
+/**
+  Constants that identify shapes, mainly to prevent instanceof calls
+ */
 [@bs.deriving jsConverter]
 type t =
   | [@bs.as 0] Poly

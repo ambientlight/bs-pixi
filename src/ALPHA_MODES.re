@@ -1,3 +1,6 @@
+/**
+  How to treat textures with premultiplied alpha
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 0] NoPremultipliedAlpha

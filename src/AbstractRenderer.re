@@ -1,3 +1,62 @@
+/**
+  used to resolve dependency cycle
+  dependency cycle: src/C-PIXI.cmj -> src/Filter-PIXI.cmj -> src/RenderTexture-PIXI.cmj -> src/BaseRenderTexture-PIXI.cmj -> src/C1-PIXI.cmj -> src/Renderer-PIXI.cmj -> src/AbstractRenderer-cmj -> src/C-PIXI.cmj
+
+  FIXME: until this is resolved,
+  feel free to force cast it with Obj.magic to DisplayObject.t or any structural subtype of Js.t(#C.displayObject)
+ */
+type displayObjectOpaque;
+
+/**
+  used to resolve dependency cycle
+  dependency cycle: src/RenderTexture-PIXI.cmj -> src/Texture-PIXI.cmj -> src/BaseTexture-PIXI.cmj -> src/Resource-PIXI.cmj -> src/Renderer-PIXI.cmj -> src/AbstractRenderer-PIXI.cmj -> src/RenderTexture-PIXI.cmj
+
+  FIXME: until this is resolved,
+  feel free to force cast it with Obj.magic to RenderTexture.t or any structural subtype of Js.t(#RenderTexture._t)
+ */
+type renderTextureOpaque;
+
+/**
+  Collection of installed plugins. 
+  These are included by default in PIXI, but can be excluded by creating a custom build. 
+  Consult the README for more information about creating custom builds and excluding plugins.
+ */
+[@bs.deriving abstract]
+type rendererPlugins = {
+  accessiblity: Accessibility.AccessibilityManager.t,
+  extract: Extract.Extract.t,
+  interaction: Interaction.InteractionManager.t,
+  prepare: Prepare.Prepare.t
+};
+
+/**
+  the optional create renderer parameters
+
+    @param width The width of the screen
+    @param height The height of the screen
+    @param view The canvas to use as a view
+    @param transparent If the render view is transparen
+    @param autoDensity Resizes renderer view in CSS pixels to allow for resolutions other than 1
+    @param antialias Sets antialias
+    @param resolution The resolution / device pixel ratio of the renderer. The resolution of the renderer retina would be 2
+    @param preserveDrawingBuffer Enables drawing buffer preservation, enable this if you need to call toDataUrl on the WebGL context
+    @param clearBeforeRender This sets if the renderer will clear the canvas or not before the new render pass
+    @param backgroundColor The background color of the rendered area (shown if not transparent)
+ */
+[@bs.obj] external createOptions: (
+  ~width: float=?,
+  ~height: float=?,
+  ~view: Webapi.Dom.HtmlElement.t=?,
+  ~transparent: bool=?,
+  ~autoDensity: bool=?,
+  ~antialias: bool=?,
+  ~resolution: float=?,
+  ~preserveDrawingBuffer: bool=?,
+  ~clearBeforeRender: bool=?,
+  ~backgroundColor: int=?,
+  unit
+) => _ = "";
+
 class type _t = [@bs] {
   inherit EventEmitter._t; 
 
@@ -35,7 +94,7 @@ class type _t = [@bs] {
   /**
     Collection of plugins
    */
-  pub plugins: Js.t({..});
+  pub plugins: rendererPlugins;
 
   /*
     The value of the preserveDrawingBuffer flag affects 
@@ -81,13 +140,15 @@ class type _t = [@bs] {
     that can then be used to create sprites 
     This can be quite useful if your displayObject is complicated and needs to be reused multiple times
 
+      @deprecated Consider using AbstractRenderer.generateTexture
+      @see </bs-pixi/PIXI/AbstractRenderer-PIXI/#val-generateTexture> AbstractRederer.generateTexture
       @param displayObject The displayObject the object will be generated from
       @param scaleMode Should be one of the scaleMode consts
       @param resolution The resolution / device pixel ratio of the texture being generated
       @param region (optional) The region of the displayObject, that shall be rendered, if no region is specified, defaults to the local bounds of the displayObject
       @return A texture of the graphics object
    */
-  pub generateTexture: (Js.t(C.displayObject), int, float, Js.Undefined.t(Rectangle.t)) => RenderTexture.t
+  pub generateTexture: (displayObjectOpaque, int, float, Js.Undefined.t(Rectangle.t)) => renderTextureOpaque
   
   /**
     Initialize the plugins
@@ -106,7 +167,27 @@ class type _t = [@bs] {
   pub resize: (float, float) => unit;
 };
 
+/**
+  The AbstractRenderer is the base for a PixiJS Renderer. 
+  It is extended by the PIXI.CanvasRenderer and PIXI.Renderer which can be used for rendering a PixiJS scene.
+ */
 type t = Js.t(_t);
+
+[@bs.module "pixi.js"][@bs.new]
+external _create: (
+  ~system: string,
+  ~options: 'a=?,
+  unit
+) => Js.t(#_t) = "AbstractRenderer";
+
+/**
+  creates a new abstract renderer
+
+    @see </bs-pixi/PIXI/AbstactRenderer-PIXI/#val-createOptions> for options AbstractRenderer.createOptions
+    @param system The name of the system this renderer is for.
+    @param options The optional renderer parameters
+ */
+let create = (~system, ~options = createOptions(()), ()) => _create(~system, ~options, ());
 
 /**
   Whether CSS dimensions of canvas view should be resized to screen dimensions automatically
@@ -161,7 +242,7 @@ type t = Js.t(_t);
 /**
   Collection of plugins
  */
-[@bs.get] external getPlugins: Js.t(#_t) => 'a = "plugins";
+[@bs.get] external getPlugins: Js.t(#_t) => rendererPlugins = "plugins";
 
 /**
   The value of the preserveDrawingBuffer flag affects 
@@ -250,11 +331,11 @@ let getType = rend => rend |. _getType |. RENDERER_TYPE.tFromJs |. Belt.Option.g
  */
 [@bs.send] external generateTexture: (
   Js.t(#_t), 
-  ~displayObject: Js.t(#C.displayObject), 
+  ~displayObject: displayObjectOpaque, 
   ~scaleMode: int,
   ~resolution: float,
   ~region: Js.t(#Rectangle._t)=?, unit
-) => Js.t(#RenderTexture._t) = "generateTexture";
+) => renderTextureOpaque = "generateTexture";
 
 /**
   Resizes the screen and canvas to the specified width and height

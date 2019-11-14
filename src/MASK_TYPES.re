@@ -1,3 +1,7 @@
+/**
+  Constants for mask implementations. 
+  We use type suffix because it leads to very different behaviours
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 0] None

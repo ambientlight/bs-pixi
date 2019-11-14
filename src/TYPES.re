@@ -1,3 +1,6 @@
+/**
+  Various GL data format types
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 5121] UnsignedByte

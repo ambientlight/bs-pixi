@@ -1,3 +1,6 @@
+/**
+  Various GL target types
+ */
 [@bs.deriving jsConverter]
 type t = 
   | [@bs.as 3553] Texture2d
