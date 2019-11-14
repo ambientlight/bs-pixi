@@ -3,7 +3,7 @@
   All textures have a base texture, which contains information about the source. 
   Therefore you can have many textures all using a single BaseTexture
  */
-type t = Js.t(C.baseTexture);
+type t = Js.t(C1.baseTexture);
 
 [@bs.obj] external _createOptions: (
   ~mipmap: int=?,
@@ -70,6 +70,7 @@ let createOptions = (
 /**
   creates a new base texture
 
+    @see </bs-pixi/PIXI/BaseTexture-PIXI/#val-createOptions> for options BaseTexture.createOptions
     @param resource The current resource to use, for things that aren't Resource objects, will be converted into a Resource.
     @param options collection of options
  */
@@ -82,38 +83,38 @@ external create: (
     | `HTMLCanvasElement(Webapi.Dom.Element.t)
     | `HTMLVideoElement(Webapi.Dom.Element.t)
   ]=?,
-  ~options: 'a,
+  ~options: 'a=?,
   unit
-) => t = "BaseTexture";
+) => Js.t(#C1.baseTexture) = "BaseTexture";
 
 /**
   number of the texture batch, used by multi-texture renderers    
  */
-[@bs.get] external get_BatchEnabled: Js.t(#C.baseTexture) => int = "_batchEnabled";
+[@bs.get] external get_BatchEnabled: Js.t(#C1.baseTexture) => int = "_batchEnabled";
 
 /**
   number of the texture batch, used by multi-texture renderers    
  */
-[@bs.set] external set_BatchEnabled: (Js.t(#C.baseTexture), int) => unit = "_batchEnabled";
+[@bs.set] external set_BatchEnabled: (Js.t(#C1.baseTexture), int) => unit = "_batchEnabled";
 
 /**
   location inside texture batch, used by multi-texture renderers   
  */
-[@bs.get] external get_BatchLocation: Js.t(#C.baseTexture) => int = "_batchLocation";
+[@bs.get] external get_BatchLocation: Js.t(#C1.baseTexture) => int = "_batchLocation";
 
 /**
   location inside texture batch, used by multi-texture renderers
  */
-[@bs.set] external set_BatchLocation: (Js.t(#C.baseTexture), int) => unit = "_batchLocation";
+[@bs.set] external set_BatchLocation: (Js.t(#C1.baseTexture), int) => unit = "_batchLocation";
 
-[@bs.get] external _getAlphaMode: Js.t(#C.baseTexture) => int = "alphaMode";
+[@bs.get] external _getAlphaMode: Js.t(#C1.baseTexture) => int = "alphaMode";
 
 /**
   How to treat premultiplied alpha
  */
 let getAlphaMode = baseTexture => baseTexture |. _getAlphaMode |. ALPHA_MODES.tFromJs |. Belt.Option.getExn;
 
-[@bs.set] external _setAlphaMode: (Js.t(#C.baseTexture), int) => unit = "alphaMode";
+[@bs.set] external _setAlphaMode: (Js.t(#C1.baseTexture), int) => unit = "alphaMode";
 
 /**
   How to treat premultiplied alpha
@@ -123,57 +124,57 @@ let setAlphaMode = (baseTexture, alphaMode) => baseTexture |. _setAlphaMode(alph
 /**
   anisotropic filtering level of texture   
  */
-[@bs.get] external getAnisotropicLevel: Js.t(#C.baseTexture) => float = "anisotropicLevel";
+[@bs.get] external getAnisotropicLevel: Js.t(#C1.baseTexture) => float = "anisotropicLevel";
 
 /**
   anisotropic filtering level of texture   
  */
-[@bs.set] external setAnisotropicLevel: (Js.t(#C.baseTexture), float) => unit = "anisotropicLevel";
+[@bs.set] external setAnisotropicLevel: (Js.t(#C1.baseTexture), float) => unit = "anisotropicLevel";
 
 /**
   Currently default cache ID  
  */
-[@bs.get] external getCacheId: Js.t(#C.baseTexture) => string = "cacheId";
+[@bs.get] external getCacheId: Js.t(#C1.baseTexture) => string = "cacheId";
 
 /**
   Currently default cache ID
  */
-[@bs.set] external setCacheId: (Js.t(#C.baseTexture), string) => unit = "cacheId";
+[@bs.set] external setCacheId: (Js.t(#C1.baseTexture), string) => unit = "cacheId";
 
 /**
   flag if BaseTexture has been destroyed
  */
-[@bs.get] external getDestroyed: Js.t(#C.baseTexture) => bool = "destroyed";
+[@bs.get] external getDestroyed: Js.t(#C1.baseTexture) => bool = "destroyed";
 
 /**
   used by TextureSystem to only update texture to the GPU when needed. Please call update() to increment it
  */
-[@bs.get] external getDirtyId: Js.t(#C.baseTexture) => int = "dirtyId";
+[@bs.get] external getDirtyId: Js.t(#C1.baseTexture) => int = "dirtyId";
 
 /**
   the pixel format of the texture
  */
-[@bs.get] external getFormat: Js.t(#C.baseTexture) => int = "format";
+[@bs.get] external getFormat: Js.t(#C1.baseTexture) => int = "format";
 
 /**
   The height of the base texture set when the image has loaded
  */
-[@bs.get] external getHeight: Js.t(#C.baseTexture) => int = "height";
+[@bs.get] external getHeight: Js.t(#C1.baseTexture) => int = "height";
 
 /**
   Whether or not the texture is a power of two, 
   try to use power of two textures as much as you can
  */
-[@bs.get] external getIsPowerOfTwo: Js.t(#C.baseTexture) => bool = "isPowerOfTwo";
+[@bs.get] external getIsPowerOfTwo: Js.t(#C1.baseTexture) => bool = "isPowerOfTwo";
 
-[@bs.get] external _getMipmap: Js.t(#C.baseTexture) => int = "mipmap";
+[@bs.get] external _getMipmap: Js.t(#C1.baseTexture) => int = "mipmap";
 
 /**
   Mipmap mode of the texture, affects downscaled images
  */
 let getMipmap = baseTexture => baseTexture |. _getMipmap |. MIPMAP_MODES.tFromJs |. Belt.Option.getExn;
 
-[@bs.set] external _setMipmap: (Js.t(#C.baseTexture), int) => unit = "mipmap";
+[@bs.set] external _setMipmap: (Js.t(#C1.baseTexture), int) => unit = "mipmap";
 
 /**
   Mipmap mode of the texture, affects downscaled images
@@ -183,41 +184,41 @@ let setMipmap = (baseTexture, mipmap) => baseTexture |. _setMipmap(mipmap |. MIP
 /**
   Pixel height of the source of this texture
  */
-[@bs.get] external getRealHeight: Js.t(#C.baseTexture) => float = "realHeight";
+[@bs.get] external getRealHeight: Js.t(#C1.baseTexture) => float = "realHeight";
 
 /**
    Pixel width of the source of this texture
  */
-[@bs.get] external getRealWeight: Js.t(#C.baseTexture) => float = "realWeight";
+[@bs.get] external getRealWeight: Js.t(#C1.baseTexture) => float = "realWeight";
 
 /**
   The resolution / device pixel ratio of the texture
  */
-[@bs.get] external getResolution: Js.t(#C.baseTexture) => float = "resolution";
+[@bs.get] external getResolution: Js.t(#C1.baseTexture) => float = "resolution";
 
 /**
   The resolution / device pixel ratio of the texture
  */
-[@bs.set] external setResolution: (Js.t(#C.baseTexture), float) => unit = "resolution";
+[@bs.set] external setResolution: (Js.t(#C1.baseTexture), float) => unit = "resolution";
 
 /**
   The scale mode to apply when scaling this texture
  */
-[@bs.get] external getScaleMode: Js.t(#C.baseTexture) => int = "scaleMode";
+[@bs.get] external getScaleMode: Js.t(#C1.baseTexture) => int = "scaleMode";
 
 /**
   The scale mode to apply when scaling this texture
  */
-[@bs.set] external setScaleMode: (Js.t(#C.baseTexture), int) => unit = "scaleMode";
+[@bs.set] external setScaleMode: (Js.t(#C1.baseTexture), int) => unit = "scaleMode";
 
-[@bs.get] external _getTarget: Js.t(#C.baseTexture) => int = "target";
+[@bs.get] external _getTarget: Js.t(#C1.baseTexture) => int = "target";
 
 /**
   Mipmap mode of the texture, affects downscaled images
  */
 let getTarget = baseTexture => baseTexture |. _getTarget |. TARGETS.tFromJs |. Belt.Option.getExn;
 
-[@bs.set] external _setTarget: (Js.t(#C.baseTexture), int) => unit = "target";
+[@bs.set] external _setTarget: (Js.t(#C1.baseTexture), int) => unit = "target";
 
 /**
   Mipmap mode of the texture, affects downscaled images
@@ -228,31 +229,31 @@ let setTarget = (baseTexture, target) => baseTexture |. _setTarget(target |. TAR
   The collection of alternative cache ids, since some BaseTextures can have more than one ID
   short name and longer full URL
  */
-[@bs.get] external getTextureCacheIds: Js.t(#C.baseTexture) => array(string) = "textureCacheIds";
+[@bs.get] external getTextureCacheIds: Js.t(#C1.baseTexture) => array(string) = "textureCacheIds";
 
 /**
   Global unique identifier for this BaseTexture
  */
-[@bs.get] external getUid: Js.t(#C.baseTexture) => string = "uid";
+[@bs.get] external getUid: Js.t(#C1.baseTexture) => string = "uid";
 
 /**
   Generally speaking means when resource is loaded
  */
-[@bs.get] external getValid: Js.t(#C.baseTexture) => bool = "valid";
+[@bs.get] external getValid: Js.t(#C1.baseTexture) => bool = "valid";
 
 /**
   The width of the base texture set when the image has loaded
  */
-[@bs.get] external getWidth: Js.t(#C.baseTexture) => bool = "width";
+[@bs.get] external getWidth: Js.t(#C1.baseTexture) => bool = "width";
 
-[@bs.get] external _getWrapMode: Js.t(#C.baseTexture) => int = "wrapMode";
+[@bs.get] external _getWrapMode: Js.t(#C1.baseTexture) => int = "wrapMode";
 
 /**
   How the texture wraps
  */
 let getWrapMode = baseTexture => baseTexture |. _getWrapMode |. WRAP_MODES.tFromJs |. Belt.Option.getExn;
 
-[@bs.set] external _setWrapMode: (Js.t(#C.baseTexture), int) => unit = "wrapMode";
+[@bs.set] external _setWrapMode: (Js.t(#C1.baseTexture), int) => unit = "wrapMode";
 
 /**
   How the texture wraps
@@ -264,17 +265,17 @@ let setTarget = (baseTexture, target) => baseTexture |. _setWrapMode(target |. W
   Removes texture from all caches.
  */
 [@bs.send]
-external destroy: Js.t(#C.baseTexture) => unit = "destroy";
+external destroy: Js.t(#C1.baseTexture) => unit = "destroy";
 
 /**
   Frees the texture from WebGL memory without destroying this texture object. 
   This means you can still use the texture later which will upload it to GPU memory again
  */
 [@bs.send]
-external dispose: Js.t(#C.baseTexture) => unit = "dispose";
+external dispose: Js.t(#C1.baseTexture) => unit = "dispose";
 
 [@bs.send]
-external _getDrawableSource: Js.t(#C.baseTexture) => Webapi.Dom.HtmlElement.t = "getDrawableSource";
+external _getDrawableSource: Js.t(#C1.baseTexture) => Webapi.Dom.HtmlElement.t = "getDrawableSource";
 
 /**
   Get the drawable source, such as HTMLCanvasElement or HTMLImageElement suitable for rendering with CanvasRenderer. 
@@ -283,7 +284,7 @@ external _getDrawableSource: Js.t(#C.baseTexture) => Webapi.Dom.HtmlElement.t = 
     @raise Failure when drawable source is not recognized
     @return Source to render with CanvasRenderer
  */
-let getDrawableSource: Js.t(#C.baseTexture) => ICanvasImageSource.t = baseTexture => { 
+let getDrawableSource: Js.t(#C1.baseTexture) => ICanvasImageSource.t = baseTexture => { 
   let drawableSource = baseTexture |. _getDrawableSource;
 
   module Internal {
@@ -318,7 +319,7 @@ let getDrawableSource: Js.t(#C.baseTexture) => ICanvasImageSource.t = baseTextur
     @return itself
  */
 [@bs.send]
-external setRealSize: (Js.t(#C.baseTexture), ~realWidth: float, ~realHeight: float, ~resolution: float=?, unit) => Js.t(#C.baseTexture) = "setRealSize";
+external setRealSize: (Js.t(#C1.baseTexture), ~realWidth: float, ~realHeight: float, ~resolution: float=?, unit) => Js.t(#C1.baseTexture) = "setRealSize";
 
 /**
   Changes resolution
@@ -327,7 +328,7 @@ external setRealSize: (Js.t(#C.baseTexture), ~realWidth: float, ~realHeight: flo
     @return itself
  */
 [@bs.send]
-external setResolution: (Js.t(#C.baseTexture), ~resolution: float) => Js.t(#C.baseTexture) = "setResolution";
+external setResolution: (Js.t(#C1.baseTexture), ~resolution: float) => Js.t(#C1.baseTexture) = "setResolution";
 
 /**
   Sets the resource if it wasn't set. Throws error if resource already present
@@ -336,7 +337,7 @@ external setResolution: (Js.t(#C.baseTexture), ~resolution: float) => Js.t(#C.ba
     @return itself
  */
 [@bs.send]
-external setResource: (Js.t(#C.baseTexture), ~resource: Js.t(#C.resource)) => Js.t(#C.baseTexture) = "setResource";
+external setResource: (Js.t(#C1.baseTexture), ~resource: Js.t(#C1.resource)) => Js.t(#C1.baseTexture) = "setResource";
 
 /**
   Changes w/h/resolution. Texture becomes valid if width and height are greater than zero
@@ -347,10 +348,10 @@ external setResource: (Js.t(#C.baseTexture), ~resource: Js.t(#C.resource)) => Js
     @return itself
  */
 [@bs.send]
-external setSize: (Js.t(#C.baseTexture), ~width: float, ~height: float, ~resolution: float=?, unit) => Js.t(#C.baseTexture) = "setSize";
+external setSize: (Js.t(#C1.baseTexture), ~width: float, ~height: float, ~resolution: float=?, unit) => Js.t(#C1.baseTexture) = "setSize";
 
 [@bs.send]
-external _setStyle: (Js.t(#C.baseTexture), ~scaleMode: int=?, ~mipmap: int=?, unit) => Js.t(#C.baseTexture) = "setStyle";
+external _setStyle: (Js.t(#C1.baseTexture), ~scaleMode: int=?, ~mipmap: int=?, unit) => Js.t(#C1.baseTexture) = "setStyle";
 
 /**
   Changes style options of BaseTexture
@@ -370,4 +371,4 @@ let setStyle =
   Invalidates the object. Texture becomes valid if width and height are greater than zero
  */
 [@bs.send]
-external update: Js.t(#C.baseTexture) => unit = "update";
+external update: Js.t(#C1.baseTexture) => unit = "update";
