@@ -1,3 +1,7 @@
+/**
+  Contains declaration of co-dependent class types.
+ */
+
 class type baseTexture = [@bs] {
   inherit EventEmitter._t;
 
