@@ -34,4 +34,4 @@ external addChild: (Js.t(#C.displayObject), ~child: Js.t(#C.displayObject as 'a)
 
 ## Contributing
 
-Any contribution is greatly appreciated. Take a look at [CONTRIBUTING.md](https://github.com/ambientlight/bs-pixi/blob/master/CONTRIBUTING.md) Feel free to reach out in [issues](https://github.com/ambientlight/bs-pixi/issues) for any questions.
+Any contribution is greatly appreciated. Take a look at [CONTRIBUTING.md](https://github.com/ambientlight/bs-pixi/blob/master/CONTRIBUTING.md). Feel free to reach out in [issues](https://github.com/ambientlight/bs-pixi/issues) for any questions.
