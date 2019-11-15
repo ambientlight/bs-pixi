@@ -30,7 +30,7 @@ Example:
 external addChild: (Js.t(#C.displayObject), ~child: Js.t(#C.displayObject as 'a)) => Js.t('a) = "addChild";
 ```
 
-(\# denotes structural subtype, so when you see Js.t(#C.displayObjects) you can feed any js object types that are structural subtypes of displayObject directly without upcasting. such as `Container.t` or `Sprite.t`)
+(`#` denotes structural subtype, so when you see `Js.t(#C.displayObjects)` you can feed any js object types that are structural subtypes of displayObject directly without upcasting. such as `Container.t` or `Sprite.t`)
 
 ## Contributing
 
