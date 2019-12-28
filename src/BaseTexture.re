@@ -260,7 +260,7 @@ let getWrapMode = baseTexture => baseTexture |. _getWrapMode |. WRAP_MODES.tFrom
 /**
   How the texture wraps
  */
-let setTarget = (baseTexture, target) => baseTexture |. _setWrapMode(target |. WRAP_MODES.tToJs);
+let setWrapMode = (baseTexture, wrapMode) => baseTexture |. _setWrapMode(wrapMode |. WRAP_MODES.tToJs);
 
 /**
   Destroys this base texture. The method stops if resource doesn't want this texture to be destroyed. 

@@ -18,7 +18,7 @@ class type displayObject = [@bs] {
   /**
     Sets the aria-label attribute of the shadow div
    */
-  [@bs.set] pub accessibleHint: Js.Nullable.t(string);
+  [@bs.set] pub accessibleHint: string;
 
   /**
     Sets the title attribute of the shadow div 
