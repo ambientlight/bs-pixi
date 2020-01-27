@@ -87,6 +87,7 @@ class type displayObject = [@bs] {
     Interaction shape. Children will be hit first, then this shape will be checked. 
     Setting this will cause this shape to be checked in hit tests rather than the displayObject's bounds.
    */
+  //TODO: implement IHitArea
   [@bs.set] pub hitArea: Js.t({..});
 
   /**
@@ -133,13 +134,13 @@ class type displayObject = [@bs] {
   /** 
     The display object container that contains this display object.
    */
-  pub parent: Js.t(container);
+  pub parent: Js.Nullable.t(Js.t(container));
 
   /* TODO: IPoint.t */
   /**
     The pivot point of the displayObject that it rotates around. Assignment by value since pixi-v4.
    */
-  [@bs.set] pub pivot: Point.t;
+  [@bs.set] pub pivot: ObservablePoint.t;
 
   /**
     The coordinate of the object relative to the local coordinates of the parent. 
@@ -159,11 +160,10 @@ class type displayObject = [@bs] {
    */
   [@bs.set] pub rotation: float;
 
-  /* TODO: IPoint.t */
   /**
     The scale factor of the object. Assignment by value since pixi-v4.
    */
-  [@bs.set] pub scale: Point.t;
+  [@bs.set] pub scale: ObservablePoint.t;
 
   /**
     The skew factor for the object in radians. Assignment by value since pixi-v4.
@@ -250,10 +250,11 @@ class type displayObject = [@bs] {
    */
   pub getLocalBounds: Js.Undefined.t(Rectangle.t) => Rectangle.t;
 
-  // TODO: Renderer.t
-  // pub render: Renderer.t => unit;
+  /**
+    Set the parent Container of this DisplayObject.
+   */
+  pub setParent: container => container;
 
-  //NOTE: setParent is in Container.t
   /**
     Convenience function to set the position, scale, skew and pivot at once.
 
@@ -303,4 +304,109 @@ class type displayObject = [@bs] {
 } and container = [@bs] {
   inherit displayObject;
 
+  /**
+    The array of children of this container.
+   */
+  pub children: array(displayObject);
+
+  /**
+    The height of the Container, setting this will actually modify the scale to achieve the value set
+   */
+  [@bs.set] pub height: float;
+
+  /**
+    Determines if the children to the displayObject can be clicked/touched 
+    Setting this to false allows PixiJS to bypass a recursive hitTest function
+   */
+  [@bs.set] pub interactiveChildren: bool;
+
+  /**
+    If set to true, the container will sort its children by zIndex value when updateTransform() is called, 
+    or manually if sortChildren() is called.
+    This actually changes the order of elements in the array, so should be treated as a basic solution 
+    that is not performant compared to other solutions, such as @link https://github.com/pixijs/pixi-display
+
+    Also be aware of that this may not work nicely with the addChildAt() function, 
+    as the zIndex sorting may cause the child to automatically sorted to another position.
+   */
+  [@bs.set] pub sortableChildren: bool;
+
+  /**
+    Should children be sorted by zIndex at the next updateTransform call. 
+    Will get automatically set to true if a new child is added, or if a child's zIndex changes.
+   */
+  [@bs.set] pub sortDirty: bool;
+
+  /**
+    The width of the Container, setting this will actually modify the scale to achieve the value set
+   */
+  [@bs.set] pub width: float;
+
+  /**
+    Adds one or more children to the container.
+    Multiple items can be added like so: myContainer.addChild(thingOne, thingTwo, thingThree)
+   */
+  pub addChild: Js.t(displayObject) => Js.t(displayObject);
+
+  /**
+    Adds a child to the container at a specified index. 
+    If the index is out of bounds an error will be thrown
+   */
+  pub addChildAt: (Js.t(displayObject), int) => Js.t(displayObject);
+
+  /**
+    Recalculates the bounds of the container.
+   */
+  pub calculateBounds: unit => unit;
+
+  /**
+    Returns the child at the specified index
+   */
+  pub getChildAt: int => Js.t(displayObject);
+
+  /**
+    Returns the display object in the container.
+   */
+  pub getChildByName: string => Js.Nullable.t(Js.t(displayObject));
+
+  /**
+    Returns the index position of a child DisplayObject instance
+   */
+  pub getChildIndex: Js.t(displayObject) => int;
+  
+  /**
+    Removes one or more children from the container.
+   */
+  pub removeChild: Js.t(displayObject) => Js.t(displayObject);
+
+  /**
+    Removes a child from the specified index position.
+   */
+  pub removeChildAt: int => Js.t(displayObject);
+  
+  /**
+    Removes all children from this container that are within the begin and end indexes.
+   */
+  pub removeChildren: (int, int) => array(Js.t(displayObject));
+
+  /**
+    Renders the object using the Canvas renderer
+   */
+  //TODO: CanvasRenderer
+  pub renderCanvas: AbstractRenderer.t => unit;
+  
+  /**
+    Changes the position of an existing child in the display object container
+   */
+  pub setChildIndex: (Js.t(displayObject), int) => unit;
+  
+  /**
+    Sorts children by zIndex. Previous order is mantained for 2 children with the same zIndex.
+   */
+  pub sortChildren: unit => unit;
+  
+  /**
+    Swaps the position of 2 Display Objects within this container.
+   */
+  pub swapChildren: (Js.t(displayObject), Js.t(displayObject)) => unit;
 };

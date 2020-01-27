@@ -29,7 +29,7 @@ let x = point##x;
 let x = point |. PIXI.Point.getX;
 ```
 
-Although using class methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class methods do not support currying, labeled and optional parameters.
+Although using class methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class methods do not support currying, labeled and optional parameters, feel free to use it if you feel comfortable with it.
 
 ## Contributing
 
