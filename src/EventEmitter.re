@@ -112,131 +112,135 @@ class type _t = [@bs] {
  */
 type t = Js.t(_t);
 
-[@bs.module][@bs.new]
-external create: unit => Js.t(#_t) = "eventemitter3";
+module Impl = {
+  [@bs.module][@bs.new]
+  external create: unit => Js.t(#_t) = "eventemitter3";
 
-/**
-  an array listing the events for which the emitter has registered listeners
- */
-[@bs.send]
-external eventNames: Js.t(#_t) => array(string) = "eventNames";
-
-/**
-  listeners registered for a given event
-
-    @param event The event name
-    @return listeners registered for a given event
+  /**
+    an array listing the events for which the emitter has registered listeners
   */
-[@bs.send]
-external listeners: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => array(Js.t({..}) => unit) = "listeners"; 
+  [@bs.send]
+  external eventNames: Js.t(#_t) => array(string) = "eventNames";
 
-/**
-  the number of listeners listening to a given event
+  /**
+    listeners registered for a given event
 
-    @param event The event name
-    @return the number of listeners listening to a given event
+      @param event The event name
+      @return listeners registered for a given event
+    */
+  [@bs.send]
+  external listeners: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => array(Js.t({..}) => unit) = "listeners"; 
+
+  /**
+    the number of listeners listening to a given event
+
+      @param event The event name
+      @return the number of listeners listening to a given event
+    */
+  [@bs.send]
+  external listenerCount: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => int = "listenerCount";
+
+  /**
+    Calls each of the listeners registered for a given event
+
+      @param event The event name
+      @return true if the event had listeners, else false
   */
-[@bs.send]
-external listenerCount: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => int = "listenerCount";
+  [@bs.send]
+  external emit: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => bool = "emit";
 
-/**
-  Calls each of the listeners registered for a given event
+  /**
+    Add a listener for a given event
 
-    @param event The event name
-    @return true if the event had listeners, else false
- */
-[@bs.send]
-external emit: (Js.t(#_t), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]) => bool = "emit";
-
-/**
-  Add a listener for a given event
-
-    @param event The event name
-    @param fn The listener function
-    @param context (optional)The context to invoke the listener with
-    @return itself
-*/
-[@bs.send]
-external on: (
-  Js.t(#_t as 'a), 
-  ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
-  ~fn: 'b => unit, 
-  ~context: 'c=?, unit)
-    => Js.t('a) = "on";
-
-/**
-  Add a listener for a given event
-
-    @param event The event name
-    @param fn The listener function
-    @param context (optional)The context to invoke the listener with
-    @return itself
-*/
-[@bs.send]
-external addListener: (
-  Js.t(#_t as 'a), 
-  ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
-  ~fn: 'b => unit, 
-  ~context: 'c=?, unit) 
-    => Js.t('a) = "addListener";
-
- /**
-  Add a one-time listner for a given event
-
-    @param event The event name
-    @param fn The listener function
-    @param context (optional)The context to invoke the listener with
-    @return itself
+      @param event The event name
+      @param fn The listener function
+      @param context (optional)The context to invoke the listener with
+      @return itself
   */
-[@bs.send]
-external once: (
-  Js.t(#_t as 'a), 
-  ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
-  ~fn: 'b => unit, 
-  ~context: 'c=?, unit) 
-    => Js.t('a) = "once";
+  [@bs.send]
+  external on: (
+    Js.t(#_t as 'a), 
+    ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
+    ~fn: 'b => unit, 
+    ~context: 'c=?, unit)
+      => Js.t('a) = "on";
 
-/**
-  Remove the listeners of a given even
+  /**
+    Add a listener for a given event
 
-    @param event The event name
-    @param fn (optional) Only remove the listeners that match this function
-    @param context (optional) Only remove the listeners that have this context
-    @param once (optional) Only remove one-time listeners
-    @return itself
+      @param event The event name
+      @param fn The listener function
+      @param context (optional)The context to invoke the listener with
+      @return itself
   */
-[@bs.send]
-external removeListener: (
-  Js.t(#_t as 'a),
-  ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)],
-  ~fn: (Js.t({..}) => unit)=?, 
-  ~context: Js.t({..})=?, 
-  ~once: bool=?, unit) 
-    => Js.t('a) = "removeListener";
+  [@bs.send]
+  external addListener: (
+    Js.t(#_t as 'a), 
+    ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
+    ~fn: 'b => unit, 
+    ~context: 'c=?, unit) 
+      => Js.t('a) = "addListener";
 
-/**
-  Remove the listeners of a given even
+  /**
+    Add a one-time listner for a given event
 
-    @param event The event name
-    @param fn (optional) Only remove the listeners that match this function
-    @param context (optional) Only remove the listeners that have this context
-    @param once (optional) Only remove one-time listeners
-    @return itself
-  */
-[@bs.send]
-external off: (
-  Js.t(#_t as 'a), 
-  ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)],
-  ~fn: (Js.t({..}) => unit)=?, 
-  ~context: Js.t({..})=?, 
-  ~once: bool=?, unit) 
-    => Js.t('a) = "off";
+      @param event The event name
+      @param fn The listener function
+      @param context (optional)The context to invoke the listener with
+      @return itself
+    */
+  [@bs.send]
+  external once: (
+    Js.t(#_t as 'a), 
+    ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)], 
+    ~fn: 'b => unit, 
+    ~context: 'c=?, unit) 
+      => Js.t('a) = "once";
 
-/**
-  Remove all listeners, or those of the specified event
+  /**
+    Remove the listeners of a given even
 
-    @param event The event name
-    @return itself
-  */
-[@bs.send]
-external removeAllListeners: (Js.t(#_t as 'a), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]=?, unit) => Js.t('a) = "removeAllListeners";
+      @param event The event name
+      @param fn (optional) Only remove the listeners that match this function
+      @param context (optional) Only remove the listeners that have this context
+      @param once (optional) Only remove one-time listeners
+      @return itself
+    */
+  [@bs.send]
+  external removeListener: (
+    Js.t(#_t as 'a),
+    ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)],
+    ~fn: (Js.t({..}) => unit)=?, 
+    ~context: Js.t({..})=?, 
+    ~once: bool=?, unit) 
+      => Js.t('a) = "removeListener";
+
+  /**
+    Remove the listeners of a given even
+
+      @param event The event name
+      @param fn (optional) Only remove the listeners that match this function
+      @param context (optional) Only remove the listeners that have this context
+      @param once (optional) Only remove one-time listeners
+      @return itself
+    */
+  [@bs.send]
+  external off: (
+    Js.t(#_t as 'a), 
+    ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)],
+    ~fn: (Js.t({..}) => unit)=?, 
+    ~context: Js.t({..})=?, 
+    ~once: bool=?, unit) 
+      => Js.t('a) = "off";
+
+  /**
+    Remove all listeners, or those of the specified event
+
+      @param event The event name
+      @return itself
+    */
+  [@bs.send]
+  external removeAllListeners: (Js.t(#_t as 'a), ~event: [@bs.unwrap] [`String(string) | `Symbol(Symbol.t)]=?, unit) => Js.t('a) = "removeAllListeners";
+}
+
+include Impl;

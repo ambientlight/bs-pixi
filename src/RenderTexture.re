@@ -70,65 +70,72 @@ let createOptions = (
   ()
 );
 
-[@bs.module "pixi.js"][@bs.new]
-external create: (
-  ~baseRenderTexture: Js.t(#BaseRenderTexture._t),
-  ~frame: Js.t(#Rectangle._t)=?,
-  unit
-) => Js.t(#_t) = "RenderTexture";
+module Impl {
 
-[@bs.val][@bs.module "pixi.js"][@bs.scope "RenderTexture"]
-external _create_: (
-  ~options: 'a=?,
-  unit
-) => Js.t(#_t) = "create";
+  [@bs.module "pixi.js"][@bs.new]
+  external create: (
+    ~baseRenderTexture: Js.t(#BaseRenderTexture._t),
+    ~frame: Js.t(#Rectangle._t)=?,
+    unit
+  ) => Js.t(#_t) = "RenderTexture";
 
-/**
-  A short hand way of creating a render texture
+  [@bs.val][@bs.module "pixi.js"][@bs.scope "RenderTexture"]
+  external _create_: (
+    ~options: 'a=?,
+    unit
+  ) => Js.t(#_t) = "create";
 
-    @see </bs-pixi/PIXI/RenderTexture-PIXI/#val-createOptions> for options RenderTexture.createOptions
-    @param options collection of options
- */
-let create_ = (~options=createOptions(()), ()) => _create_(~options, ());
+  /**
+    A short hand way of creating a render texture
 
-/**
-  Stores sourceFrame when this texture is inside current filter stack. 
-  You can read it inside filters.
- */
-[@bs.get] external getFilterFrame: Js.t(#_t) => Js.t(#Rectangle._t) = "filterFrame";
+      @see </bs-pixi/PIXI/RenderTexture-PIXI/#val-createOptions> for options RenderTexture.createOptions
+      @param options collection of options
+  */
+  let create_ = (~options=createOptions(()), ()) => _create_(~options, ());
 
-/**
-  Stores sourceFrame when this texture is inside current filter stack. 
-  You can read it inside filters.
- */
-[@bs.set] external setFilterFrame: (Js.t(#_t), Js.t(#Rectangle._t)) => unit = "filterFrame";
+  /**
+    Stores sourceFrame when this texture is inside current filter stack. 
+    You can read it inside filters.
+  */
+  [@bs.get] external getFilterFrame: Js.t(#_t) => Js.t(#Rectangle._t) = "filterFrame";
 
-/**
-  This will let the renderer know if the texture is valid. 
-  If it's not then it cannot be rendered.
- */
-[@bs.get] external getValid: Js.t(#_t) => bool = "valid";
+  /**
+    Stores sourceFrame when this texture is inside current filter stack. 
+    You can read it inside filters.
+  */
+  [@bs.set] external setFilterFrame: (Js.t(#_t), Js.t(#Rectangle._t)) => unit = "filterFrame";
 
-/**
-  This will let the renderer know if the texture is valid. 
-  If it's not then it cannot be rendered.
- */
-[@bs.set] external setValid: (Js.t(#_t), bool) => unit = "valid";
+  /**
+    This will let the renderer know if the texture is valid. 
+    If it's not then it cannot be rendered.
+  */
+  [@bs.get] external getValid: Js.t(#_t) => bool = "valid";
 
-/**
-  Resizes the RenderTexture
+  /**
+    This will let the renderer know if the texture is valid. 
+    If it's not then it cannot be rendered.
+  */
+  [@bs.set] external setValid: (Js.t(#_t), bool) => unit = "valid";
 
-    @param width The width to resize to.
-    @param height The height to resize to.
-    @param resizeBaseTexture Should the baseTexture.width and height values be resized as well?
- */
-[@bs.send]
-external resize: (Js.t(#_t), ~width: float, ~height: float, ~resizeBaseTexture: bool=?, unit) => unit = "resize";
+  /**
+    Resizes the RenderTexture
 
-/**
-  Changes the resolution of baseTexture, but does not change framebuffer size.
+      @param width The width to resize to.
+      @param height The height to resize to.
+      @param resizeBaseTexture Should the baseTexture.width and height values be resized as well?
+  */
+  [@bs.send]
+  external resize: (Js.t(#_t), ~width: float, ~height: float, ~resizeBaseTexture: bool=?, unit) => unit = "resize";
 
-    @param resolution The new resolution to apply to RenderTexture
- */
-[@bs.send]
-external setResolution: (Js.t(#_t), ~resolution: float) => unit = "setResolution";
+  /**
+    Changes the resolution of baseTexture, but does not change framebuffer size.
+
+      @param resolution The new resolution to apply to RenderTexture
+  */
+  [@bs.send]
+  external setResolution: (Js.t(#_t), ~resolution: float) => unit = "setResolution";
+}
+
+include EventEmitter.Impl;
+include Texture.Impl;
+include Impl;

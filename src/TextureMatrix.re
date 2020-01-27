@@ -51,24 +51,28 @@ type t = {
   uClampOffset: Js.Typed_array.Float32Array.t
 };
 
-[@bs.module "pixi.js"][@bs.new]
-external create: (~texture: opaqueTexture, ~clampMargin: float=?, unit) => t = "TextureMatrix";
+module Impl {
+  [@bs.module "pixi.js"][@bs.new]
+  external create: (~texture: opaqueTexture, ~clampMargin: float=?, unit) => t = "TextureMatrix";
 
-/**
-  Multiplies uvs array to transform
+  /**
+    Multiplies uvs array to transform
 
-    @param uvs Float32Array mesh uvs
-    @param out Float32Array output
-    @return output
- */
-[@bs.send]
-external multiplyUvs: (t, ~uvs: Js.Typed_array.Float32Array.t, ~out: Js.Typed_array.Float32Array.t=?, unit) => Js.Typed_array.Float32Array.t = "multiplyUvs";
+      @param uvs Float32Array mesh uvs
+      @param out Float32Array output
+      @return output
+  */
+  [@bs.send]
+  external multiplyUvs: (t, ~uvs: Js.Typed_array.Float32Array.t, ~out: Js.Typed_array.Float32Array.t=?, unit) => Js.Typed_array.Float32Array.t = "multiplyUvs";
 
-/**
-  updates matrices if texture was changed
+  /**
+    updates matrices if texture was changed
 
-    @param forceUpdate if true, matrices will be updated any case
-    @return whether or not it was updated
- */
-[@bs.send]
-external update: (t, ~forceUpdate: bool=?, unit) => bool = "update";
+      @param forceUpdate if true, matrices will be updated any case
+      @return whether or not it was updated
+  */
+  [@bs.send]
+  external update: (t, ~forceUpdate: bool=?, unit) => bool = "update";
+}
+
+include Impl;
