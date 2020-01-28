@@ -29,7 +29,44 @@ let x = point##x;
 let x = point |. PIXI.Point.getX;
 ```
 
-Although using class methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class methods do not support currying, labeled and optional parameters, feel free to use it if you feel comfortable with it.
+Although using class methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class methods do not support currying, labeled and optional parameters, feel free to use it if you feel comfortable with it, as in next example.
+
+## Example
+
+```reason
+let app = PIXI.Application.create(~options=PIXI.Application.createApplicationOptions(
+  ~width=800,
+  ~height=600,
+  ~backgroundColor=int_of_string("0x1099bb"),
+  ~resolution=DomRe.window |. Obj.magic |. Js.Dict.unsafeGet("devicePixelRatio"), ()), 
+  ());
+
+Webapi.Dom.document 
+|> Webapi.Dom.Document.asHtmlDocument 
+|. Belt.Option.flatMap(document => document |> Webapi.Dom.HtmlDocument.body)
+|. Belt.Option.map(body => body |> Webapi.Dom.Element.appendChild(app##view))
+|> ignore;
+
+let container = PIXI.Container.create();
+app##stage |. PIXI.Container.addChild(container);
+
+let texture = PIXI.Texture.from(~source=`String("https://pixijs.io/examples/examples/assets/bunny.png"), ());
+
+for (i in 0 to 24) {
+  let bunny = PIXI.Sprite.create(texture);
+  bunny##anchor##set(0.5, 0.5);
+  bunny |. PIXI.Sprite.setX(float_of_int(i mod 5 * 40));
+  bunny |. PIXI.Sprite.setY(floor(float_of_int(i) /. 5.) *. 40.);
+  container |. PIXI.Container.addChild(bunny) |> ignore;
+};
+
+container##pivot##x #= (container##width /. 2.);
+container##pivot##y #= (container##height /. 2.);
+
+app##ticker |. PIXI.Ticker.add(delta => {
+  container |. PIXI.Container.setRotation(container##rotation -. 0.01 *. delta);
+}, ());
+```
 
 ## Contributing
 
