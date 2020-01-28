@@ -5,16 +5,16 @@
  */
 type t = Js.t(C.container);
 
-[@bs.deriving abstract]
-type destroyOptions = {
-  [@bs.optional] children: bool,
-  [@bs.optional] texture: bool,
-  [@bs.optional] baseTexture: bool
-};
-
 module Impl {
   [@bs.module "pixi.js"][@bs.new]
   external create: unit => t = "Container";
+
+  [@bs.obj] external createDestroyOptions: (
+    ~children: bool=?,
+    ~texture: bool=?,
+    ~baseTexture: bool=?,
+    unit
+  ) => _ = "";
 
   /**
     The array of children of this container.
@@ -109,11 +109,13 @@ module Impl {
     Do not use a Container after calling destroy.
    */
   [@bs.send]
-  external destroy: (
+  external _destroy: (
     Js.t(#C.container), 
-    ~option: ([@bs.unwrap] [`Object(destroyOptions) | `Bool(bool)])=?, 
+    ~options: 'a=?, 
     unit
   ) => unit = "destroy";
+
+  let destroy = (container, ~options = createDestroyOptions(()), ()) => _destroy(container, ~options, ());
 
   /**
     Returns the child at the specified index
