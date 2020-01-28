@@ -1,8 +1,7 @@
 # bs-pixi
-BuckleScript bindings for [PIXI v5](https://github.com/pixijs) - experimental (Work in progress)
+BuckleScript bindings for [PIXI v5](https://github.com/pixijs) (Work in progress)
 
 Refer to [documentation](https://ambientlight.github.io/bs-pixi) for existing coverage.
-Examples will be added very soon.
 
 ## Installation
 
