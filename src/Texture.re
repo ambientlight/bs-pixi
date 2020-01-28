@@ -150,7 +150,7 @@ module Impl {
     ~orig: Rectangle.t=?, 
     ~trim: Rectangle.t=?, 
     ~rotate: float=?, 
-    ~anchor: Point.t=?, unit) => Js.t(#_t) = "Texture";
+    ~anchor: Point.t=?, unit) => t = "Texture";
 
   /**
     This is the area of the BaseTexture image to actually copy to the Canvas / WebGL when rendering, 

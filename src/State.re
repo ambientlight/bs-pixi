@@ -49,6 +49,9 @@ class type _t = [@bs] {
 type t = Js.t(_t);
 
 module Impl {
+  [@bs.module "pixi.js"][@bs.new]
+  external create: unit => t = "State";
+
   /**
     Activates blending of the computed fragment color values
   */

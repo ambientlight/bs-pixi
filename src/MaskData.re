@@ -62,7 +62,7 @@ module Impl {
       @param maskObject object that describes the mask
   */
   [@bs.module "pixi.js"][@bs.new]
-  external create: (~maskObject: displayObjectOpaque=?, unit) => Js.t(#_t) = "MaskData";
+  external create: (~maskObject: displayObjectOpaque=?, unit) => t = "MaskData";
 
   /**
     Scissor operation above the mask in stack. 

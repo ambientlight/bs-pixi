@@ -77,13 +77,13 @@ module Impl {
     ~baseRenderTexture: Js.t(#BaseRenderTexture._t),
     ~frame: Js.t(#Rectangle._t)=?,
     unit
-  ) => Js.t(#_t) = "RenderTexture";
+  ) => t = "RenderTexture";
 
   [@bs.val][@bs.module "pixi.js"][@bs.scope "RenderTexture"]
   external _create_: (
     ~options: 'a=?,
     unit
-  ) => Js.t(#_t) = "create";
+  ) => t = "create";
 
   /**
     A short hand way of creating a render texture

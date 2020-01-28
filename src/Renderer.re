@@ -168,9 +168,6 @@ class type _t = [@bs] {
 
 type t = Js.t(_t);
 
-[@bs.module "pixi.js"][@bs.new]
-external _create: (~options: 'a=?, unit) => Js.t(#_t) = "Renderer";
-
 /**
   Adds a plugin to the renderer
 
@@ -180,160 +177,169 @@ external _create: (~options: 'a=?, unit) => Js.t(#_t) = "Renderer";
 [@bs.val][@bs.module "pixi.js"][@bs.scope "Renderer"]
 external registerPlugin: (~pluginName: string, ~ctor: Js.Types.function_val) => unit = "registerPlugin";
 
-/**
-  creates a new renderer
+module Impl {
 
-    @see </bs-pixi/PIXI/Renderer-PIXI/#val-createOptions> for options Renderer.createOptions
-    @param options The optional renderer parameters
- */
-let create = (~options = createOptions(()), ()) => _create(~options, ());
+  [@bs.module "pixi.js"][@bs.new]
+  external _create: (~options: 'a=?, unit) => t = "Renderer";
+  /**
+    creates a new renderer
 
-/**
-  Batch system instance
- */
-[@bs.get] external getBatch: Js.t(#_t) => Systems.BatchSystem.t = "batch";
+      @see </bs-pixi/PIXI/Renderer-PIXI/#val-createOptions> for options Renderer.createOptions
+      @param options The optional renderer parameters
+  */
+  let create = (~options = createOptions(()), ()) => _create(~options, ());
 
-/**
-  Context system intance
- */
-[@bs.get] external getContext: Js.t(#_t) => Systems.ContextSystem.t = "context";
+  /**
+    Batch system instance
+  */
+  [@bs.get] external getBatch: Js.t(#_t) => Systems.BatchSystem.t = "batch";
 
-/**
-  Collection of methods for extracting data (image, pixels, etc.) 
-  from a display object or render texture
- */
-[@bs.get] external getExtract: Js.t(#_t) => Extract.Extract.t = "extract";
+  /**
+    Context system intance
+  */
+  [@bs.get] external getContext: Js.t(#_t) => Systems.ContextSystem.t = "context";
 
-/**
-  Filter system instance
- */
-[@bs.get] external getFilter: Js.t(#_t) => Systems.FilterSystem.t = "filter";
+  /**
+    Collection of methods for extracting data (image, pixels, etc.) 
+    from a display object or render texture
+  */
+  [@bs.get] external getExtract: Js.t(#_t) => Extract.Extract.t = "extract";
 
-/**
-  Framebuffer system instance
- */
-[@bs.get] external getFramebuffer: Js.t(#_t) => Systems.FramebufferSystem.t = "framebuffer";
+  /**
+    Filter system instance
+  */
+  [@bs.get] external getFilter: Js.t(#_t) => Systems.FilterSystem.t = "filter";
 
-/**
-  Geometry system instance
- */
-[@bs.get] external getGeometry: Js.t(#_t) => Systems.BatchSystem.t = "geometry";
+  /**
+    Framebuffer system instance
+  */
+  [@bs.get] external getFramebuffer: Js.t(#_t) => Systems.FramebufferSystem.t = "framebuffer";
 
-/**
-  WebGL context, set by the contextSystem (this.context)
- */
-[@bs.get] external getGl: Js.t(#_t) => webGLRenderingContext = "gl";
+  /**
+    Geometry system instance
+  */
+  [@bs.get] external getGeometry: Js.t(#_t) => Systems.BatchSystem.t = "geometry";
 
-/**
-  Global uniforms
- */
-[@bs.get] external getGlobalUniforms: Js.t(#_t) => UniformGroup.t = "globalUniforms";
+  /**
+    WebGL context, set by the contextSystem (this.context)
+  */
+  [@bs.get] external getGl: Js.t(#_t) => webGLRenderingContext = "gl";
 
-/**
-  Global uniforms
- */
-[@bs.set] external setGlobalUniforms: (Js.t(#_t), UniformGroup.t) => unit = "globalUniforms";
+  /**
+    Global uniforms
+  */
+  [@bs.get] external getGlobalUniforms: Js.t(#_t) => UniformGroup.t = "globalUniforms";
 
-/**
-  Projection system instance
- */
-[@bs.get] external getProjection: Js.t(#_t) => Systems.ProjectionSystem.t = "projection";
+  /**
+    Global uniforms
+  */
+  [@bs.set] external setGlobalUniforms: (Js.t(#_t), UniformGroup.t) => unit = "globalUniforms";
 
-/**
-  Flag if we are rendering to the screen vs renderTexture
- */
-[@bs.get] external getRenderingToScreen: Js.t(#_t) => bool = "renderingToScreen";
+  /**
+    Projection system instance
+  */
+  [@bs.get] external getProjection: Js.t(#_t) => Systems.ProjectionSystem.t = "projection";
 
-/**
-  RenderTexture system instance
- */
-[@bs.get] external getRenderingToScreen: Js.t(#_t) => Systems.RenderTextureSystem.t = "renderTexture";
+  /**
+    Flag if we are rendering to the screen vs renderTexture
+  */
+  [@bs.get] external getRenderingToScreen: Js.t(#_t) => bool = "renderingToScreen";
 
-/**
-  Scissor system instance
- */
-[@bs.get] external getRenderingToScreen: Js.t(#_t) => Systems.ScissorSystem.t = "scissors";
+  /**
+    RenderTexture system instance
+  */
+  [@bs.get] external getRenderTexture: Js.t(#_t) => Systems.RenderTextureSystem.t = "renderTexture";
 
-/**
-  Shader system instance
- */
-[@bs.get] external getShader: Js.t(#_t) => Systems.ShaderSystem.t = "shader";
+  /**
+    Scissor system instance
+  */
+  [@bs.get] external getScissor: Js.t(#_t) => Systems.ScissorSystem.t = "scissors";
 
-/**
-  State system instance
- */
-[@bs.get] external getState: Js.t(#_t) => Systems.StateSystem.t = "state";
+  /**
+    Shader system instance
+  */
+  [@bs.get] external getShader: Js.t(#_t) => Systems.ShaderSystem.t = "shader";
 
-/**
-  Stencil system instance
- */
-[@bs.get] external getStencil: Js.t(#_t) => Systems.StencilSystem.t = "stencil";
+  /**
+    State system instance
+  */
+  [@bs.get] external getState: Js.t(#_t) => Systems.StateSystem.t = "state";
 
-/**
-  Texture system instance
- */
-[@bs.get] external getTexture: Js.t(#_t) => Systems.TextureSystem.t = "texture";
+  /**
+    Stencil system instance
+  */
+  [@bs.get] external getStencil: Js.t(#_t) => Systems.StencilSystem.t = "stencil";
 
-/**
-  Texture garbage collector system instance
- */
-[@bs.get] external getTextureGC: Js.t(#_t) => Systems.TextureGCSystem.t = "textureGC";
+  /**
+    Texture system instance
+  */
+  [@bs.get] external getTexture: Js.t(#_t) => Systems.TextureSystem.t = "texture";
 
-/**
-  Add a new system to the renderer.
+  /**
+    Texture garbage collector system instance
+  */
+  [@bs.get] external getTextureGC: Js.t(#_t) => Systems.TextureGCSystem.t = "textureGC";
 
-    @param classRef Class Reference
-    @param name Property name for system, if not specified will use a static name property on the class itself. This name will be assigned as s property on the Renderer so make sure it doesn't collide with properties on Renderer
-    @return Return instance of renderer
- */
-[@bs.send]
-external addSystem: (Js.t(#_t), ~classRef: jsClassRef, ~name: string=?, unit) => Js.t(#_t) = "addSystem";
+  /**
+    Add a new system to the renderer.
 
-/**
-  Clear the frame buffer
- */
-[@bs.send]
-external clear: Js.t(#_t) => unit = "clear";
+      @param classRef Class Reference
+      @param name Property name for system, if not specified will use a static name property on the class itself. This name will be assigned as s property on the Renderer so make sure it doesn't collide with properties on Renderer
+      @return Return instance of renderer
+  */
+  [@bs.send]
+  external addSystem: (Js.t(#_t), ~classRef: jsClassRef, ~name: string=?, unit) => Js.t(#_t) = "addSystem";
 
-/**
-  Removes everything from the renderer (event listeners, spritebatch, etc...)
+  /**
+    Clear the frame buffer
+  */
+  [@bs.send]
+  external clear: Js.t(#_t) => unit = "clear";
 
-    @param removeView Removes the Canvas element from the DOM
- */
-[@bs.send]
-external destroy: (Js.t(#_t), ~removeView: bool=?, unit) => unit = "destroy";
+  /**
+    Removes everything from the renderer (event listeners, spritebatch, etc...)
 
-/**
-  Renders the object to its WebGL view
+      @param removeView Removes the Canvas element from the DOM
+  */
+  [@bs.send]
+  external destroy: (Js.t(#_t), ~removeView: bool=?, unit) => unit = "destroy";
 
-    @param displayObject The object to be rendered
-    @param renderTexture The render texture to render to
-    @param clear Should the canvas be cleared before the new render
-    @param transform A transform to apply to the render texture before rendering
-    @param skipUpdateTransform Should we skip the update transform pass?
- */
-[@bs.send]
-external render: (
-  Js.t(#_t), 
-  ~displayObject: AbstractRenderer.displayObjectOpaque, 
-  ~renderTexture: AbstractRenderer.renderTextureOpaque=?, 
-  ~clear: bool=?,
-  ~transform: Js.t(#Matrix._t)=?,
-  ~skipUpdateTransform: bool=?, unit) => unit = "render";
+  /**
+    Renders the object to its WebGL view
 
-/**
-  Resets the WebGL state so you can render things however you fancy
+      @param displayObject The object to be rendered
+      @param renderTexture The render texture to render to
+      @param clear Should the canvas be cleared before the new render
+      @param transform A transform to apply to the render texture before rendering
+      @param skipUpdateTransform Should we skip the update transform pass?
+  */
+  [@bs.send]
+  external render: (
+    Js.t(#_t), 
+    ~displayObject: AbstractRenderer.displayObjectOpaque, 
+    ~renderTexture: AbstractRenderer.renderTextureOpaque=?, 
+    ~clear: bool=?,
+    ~transform: Js.t(#Matrix._t)=?,
+    ~skipUpdateTransform: bool=?, unit) => unit = "render";
 
-    @return itself
- */
-[@bs.send]
-external reset: Js.t(#_t) => Js.t(#_t) = "reset";
+  /**
+    Resets the WebGL state so you can render things however you fancy
 
-/**
-  Resizes the WebGL view to the specified width and height
+      @return itself
+  */
+  [@bs.send]
+  external reset: Js.t(#_t) => Js.t(#_t) = "reset";
 
-    @param screenWidth The new width of the screen
-    @param screenHeight The new height of the screen
- */
-[@bs.send]
-external resize: (Js.t(#_t), ~screenWidth: float, ~screenHeight: float) => unit = "resize";
+  /**
+    Resizes the WebGL view to the specified width and height
+
+      @param screenWidth The new width of the screen
+      @param screenHeight The new height of the screen
+  */
+  [@bs.send]
+  external resize: (Js.t(#_t), ~screenWidth: float, ~screenHeight: float) => unit = "resize";
+}
+
+include EventEmitter.Impl;
+include AbstractRenderer.Impl;
+include Impl;

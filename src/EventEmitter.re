@@ -114,7 +114,7 @@ type t = Js.t(_t);
 
 module Impl = {
   [@bs.module][@bs.new]
-  external create: unit => Js.t(#_t) = "eventemitter3";
+  external create: unit => t = "eventemitter3";
 
   /**
     an array listing the events for which the emitter has registered listeners

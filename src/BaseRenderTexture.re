@@ -73,7 +73,7 @@ module Impl {
   external _create: (
     ~options: 'a=?,
     unit
-  ) => Js.t(#C1.baseTexture) = "BaseRenderTexture";
+  ) => t = "BaseRenderTexture";
 
   /**
     creates a new base render texture

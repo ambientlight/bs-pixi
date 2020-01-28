@@ -230,7 +230,7 @@ module Impl {
     A default (identity) matrix
   */
   [@bs.val][@bs.module "pixi.js"][@bs.scope "Matrix"]
-  external identity: t = "IDENTITY";
+  external identity_: t = "IDENTITY";
 
   /**
     A temp matrix

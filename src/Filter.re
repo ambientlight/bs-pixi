@@ -67,7 +67,7 @@ module Impl {
       @param uniforms Custom uniforms to use to augment the built-in ones
   */
   [@bs.module "pixi.js"][@bs.new]
-  external create: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~uniforms: 'a=?, unit) => Js.t(#_t) = "Filter";
+  external create: (~vertexSrc: string=?, ~fragmentSrc: string=?, ~uniforms: 'a=?, unit) => t = "Filter";
 
   /**
     The default fragment shader source

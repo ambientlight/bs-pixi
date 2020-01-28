@@ -23,7 +23,7 @@ module Impl {
       @param uniforms Custom uniforms to use to augment the built-in ones
   */
   [@bs.module "pixi.js"][@bs.new]
-  external create: (~program: Js.t(#Program._t)=?, ~uniforms: 'a=?, unit) => Js.t(#_t) = "Shader";
+  external create: (~program: Js.t(#Program._t)=?, ~uniforms: 'a=?, unit) => t = "Shader";
 
   /**
     Program that the shader uses

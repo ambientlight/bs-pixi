@@ -74,7 +74,7 @@ module Impl {
       @return new point
   */
   [@bs.module "pixi.js"][@bs.new]
-  external create: (~x: float=?, ~y: float=?, unit) => Js.t(#_t) = "Point";
+  external create: (~x: float=?, ~y: float=?, unit) => t = "Point";
 
   /**
     position of the point on the x axis

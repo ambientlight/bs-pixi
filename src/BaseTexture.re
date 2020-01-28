@@ -79,7 +79,7 @@ module Impl {
     ]=?,
     ~options: 'a=?,
     unit
-  ) => Js.t(#C1.baseTexture) = "BaseTexture";
+  ) => t = "BaseTexture";
 
   /**
     creates a new base texture

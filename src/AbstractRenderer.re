@@ -179,7 +179,7 @@ module Impl {
     ~system: string,
     ~options: 'a=?,
     unit
-  ) => Js.t(#_t) = "AbstractRenderer";
+  ) => t = "AbstractRenderer";
 
   /**
     creates a new abstract renderer
@@ -357,4 +357,5 @@ module Impl {
   [@bs.send] external resize: (Js.t(#_t), ~screenWidth: float, ~screenHeight: float) => unit = "resize";
 };
 
+include EventEmitter.Impl;
 include Impl;
