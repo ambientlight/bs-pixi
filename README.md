@@ -47,22 +47,36 @@ Webapi.Dom.document
 |> ignore;
 
 let container = PIXI.Container.create();
-app##stage |. PIXI.Container.addChild(container);
 
+app 
+|. PIXI.Application.getStage 
+|. PIXI.Container.addChild(container);
+
+// Create a new texture
 let texture = PIXI.Texture.from(~source=`String("https://pixijs.io/examples/examples/assets/bunny.png"), ());
 
+// Create a 5x5 grid of bunnies
 for (i in 0 to 24) {
   let bunny = PIXI.Sprite.create(texture);
   bunny##anchor##set(0.5, 0.5);
-  bunny |. PIXI.Sprite.setX(float_of_int(i mod 5 * 40));
+  bunny |. PIXI.Sprite.setX(float_of_int((i mod 5) * 40));
   bunny |. PIXI.Sprite.setY(floor(float_of_int(i) /. 5.) *. 40.);
   container |. PIXI.Container.addChild(bunny) |> ignore;
 };
 
+container |. PIXI.Container.setX(app##screen##width /. 2.);
+container |. PIXI.Container.setY(app##screen##height /. 2.);
+
+// Center bunny sprite in local container coordinates
 container##pivot##x #= (container##width /. 2.);
 container##pivot##y #= (container##height /. 2.);
 
-app##ticker |. PIXI.Ticker.add(delta => {
+// Listen for animate update
+app
+|. PIXI.Application.getTicker
+|. PIXI.Ticker.add(delta => {
+  // rotate the container!
+  // use delta to create frame-independent transform
   container |. PIXI.Container.setRotation(container##rotation -. 0.01 *. delta);
 }, ());
 ```
