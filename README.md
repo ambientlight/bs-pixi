@@ -1,8 +1,7 @@
 # bs-pixi
-BuckleScript bindings for [PIXI v5](https://github.com/pixijs) - experimental (Work in progress)
+BuckleScript bindings for [PIXI v5](https://github.com/pixijs) (Work in progress)
 
 Refer to [documentation](https://ambientlight.github.io/bs-pixi) for existing coverage.
-Examples will be added very soon.
 
 ## Installation
 
@@ -21,7 +20,7 @@ And add `bs-pixi` into `bs-dependencies` in your project `bsconfig.json`.
 external addChild: (Js.t(#C.displayObject), ~child: Js.t(#C.displayObject as 'a)) => Js.t('a) = "addChild";
 ```
 
-`#` denotes structural subtype, so when we see `Js.t(#C.displayObjects)` we can feed any js object types that are structural subtypes of displayObject directly without upcasting to a type which is defined in a module where `addChild` is defined. Also this allows us to utilize model functions as well as class methods for the same functionality like:
+`#` denotes structural subtype, so when we see `Js.t(#C.displayObjects)` we can feed any js object types that are structural subtypes of displayObject directly without upcasting to a type which is defined in a module where `addChild` is defined. Also this allows us to utilize model functions as well as object methods for the same functionality like:
 
 ```ocaml
 let point = PIXI.Point.create(~x=1.0, ~y=5.0, ());
@@ -29,7 +28,7 @@ let x = point##x;
 let x = point |. PIXI.Point.getX;
 ```
 
-Although using class methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class methods do not support currying, labeled and optional parameters, feel free to use it if you feel comfortable with it, as in next example.
+Although using object methods for anything slightly more complex as simple accessors is not really practical, as `[@bs]` class object methods do not support currying, labeled and optional parameters, feel free to use it if you feel comfortable with it, as in next example.
 
 ## Example
 
