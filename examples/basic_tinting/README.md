@@ -1,6 +1,6 @@
-## Transparent Background
+## Tinting
 
-Port of [demos-basic/transparent-background.js](https://pixijs.io/examples/#/demos-basic/transparent-background.js) to reason.
+Port of [demos-basic/tinting.js](https://pixijs.io/examples/#/demos-basic/tinting.js) to reason.
 
 ## Running this example
 
