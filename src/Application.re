@@ -2,7 +2,7 @@ class type _t = [@bs] {
   /** 
     Loader instance to help with asset loading.
    */
-  pub loader: Loader.t;
+  pub loader: Js.t(#Loader._t);
 
   /**
     WebGL renderer if available, otherwise CanvasRenderer.
@@ -97,6 +97,16 @@ module Impl {
   external _create: (~options: 'a=?, unit) => t = "Application";
 
   let create = (~options = createApplicationOptions(()), ()) => _create(~options, ());
+
+  /**
+    Loader instance to help with asset loading.
+   */
+  [@bs.get] external getLoader: Js.t(#_t) => Js.t(#Loader._t) = "loader";
+
+  /**
+    Loader instance to help with asset loading.
+   */
+  [@bs.set] external setLoader: (Js.t(#_t), Js.t(#Loader._t)) => unit = "loader";
 
   /**
     WebGL renderer if available, otherwise CanvasRenderer.
