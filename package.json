@@ -1,6 +1,6 @@
 {
     "name": "bs-pixi",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "buckleScript bindings for PIXI v5",
     "scripts": {
         "build": "./node_modules/.bin/bsb -make-world",

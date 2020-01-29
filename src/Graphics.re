@@ -256,6 +256,7 @@ module Impl {
       @param innerRadius The inner radius between points, default half radius
       @param rotation The rotation of the star in radians, where 0 is vertical
    */
+  [@bs.send]
   external drawStar: (Js.t(#_t as 'a), ~x: float, ~y: float, ~points: int, ~radius: float, ~innerRadius: float=?, ~rotation: float=?, unit) => Js.t('a) = "drawStar";
 
   /**
