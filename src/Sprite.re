@@ -69,7 +69,7 @@ external _from: (
     | `HTMLVideoElement(Webapi.Dom.HtmlElement.t)],
   ~options: 'a,
   unit
-) => Js.t(#_t) = "from";
+) => t = "from";
 
 /**
   Helper function that creates a new sprite based on the source you provide. 
