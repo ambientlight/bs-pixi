@@ -38,7 +38,7 @@
     "-bs-g"
   ],
   "dependencies": {
-    "bs-pixi": "^0.1.8",
+    "bs-pixi": "^0.1.10",
     "bs-webapi": "^0.13.2"
   },
   "babel": {
