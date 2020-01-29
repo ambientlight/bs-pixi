@@ -5,3 +5,4 @@ lib/
 .tgz
 __tests__
 .github/
+examples/

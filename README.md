@@ -84,6 +84,8 @@ app
 }, ());
 ```
 
+Also make sure to **CHECK OUT** other [examples](https://github.com/ambientlight/bs-pixi/tree/master/examples).
+
 ## Contributing
 
 Any contribution is greatly appreciated. Take a look at [CONTRIBUTING.md](https://github.com/ambientlight/bs-pixi/blob/master/CONTRIBUTING.md). Feel free to reach out in [issues](https://github.com/ambientlight/bs-pixi/issues) for any questions.
