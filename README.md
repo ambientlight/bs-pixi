@@ -1,3 +1,8 @@
+[![STATUS](https://github.com/ambientlight/bs-pixi/workflows/Deploy%20Docs/badge.svg)](https://github.com/ambientlight/bs-pixi/actions)
+[![VERSION](https://img.shields.io/npm/v/bs-pixi)](https://www.npmjs.com/package/bs-pixi)
+[![LICENSE](https://img.shields.io/github/license/ambientlight/bs-pixi?t)](https://github.com/ambientlight/bs-pixi/blob/master/LICENSE)
+[![ISSUES](https://img.shields.io/github/issues/ambientlight/bs-pixi)](https://github.com/ambientlight/bs-pixi/issues)
+
 # bs-pixi
 BuckleScript bindings for [PIXI v5](https://github.com/pixijs) (Work in progress)
 
