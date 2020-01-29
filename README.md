@@ -25,7 +25,7 @@ And add `bs-pixi` into `bs-dependencies` in your project `bsconfig.json`.
 external addChild: (Js.t(#C.displayObject), ~child: Js.t(#C.displayObject as 'a)) => Js.t('a) = "addChild";
 ```
 
-`#` denotes structural subtype, so when we see `Js.t(#C.displayObjects)` we can feed any js object types that are structural subtypes of displayObject directly without upcasting to a type which is defined in a module where `addChild` is defined. Also this allows us to utilize model functions as well as object methods for the same functionality like:
+`#` denotes structural subtype, so when we see `Js.t(#C.displayObjects)` we can feed any js object types that are structural subtypes of displayObject directly without upcasting to a type which is defined in a module where `addChild` is defined. Also this allows us to utilize both functional as well as object apis for the same functionality like:
 
 ```ocaml
 let point = PIXI.Point.create(~x=1.0, ~y=5.0, ());
