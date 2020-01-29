@@ -35,8 +35,8 @@ Although using class methods for anything slightly more complex as simple access
 
 ```reason
 let app = PIXI.Application.create(~options=PIXI.Application.createApplicationOptions(
-  ~width=800,
-  ~height=600,
+  ~width=800.,
+  ~height=600.,
   ~backgroundColor=int_of_string("0x1099bb"),
   ~resolution=DomRe.window |. Obj.magic |. Js.Dict.unsafeGet("devicePixelRatio"), ()), 
   ());

@@ -100,7 +100,7 @@ module Impl {
       @param anticlockwise Specifies whether the drawing should be counter-clockwise or clockwise. False is default, and indicates clockwise, while true indicates counter-clockwise.
    */
   [@bs.send]
-  external arc: (Js.t(#_t), ~cx: float, ~cy: float, ~radius: float, ~startAngle: float, ~endAngle: float, ~anticlockwise:bool=?, unit) => Js.t(#_t) = "arc";
+  external arc: (Js.t(#_t as 'a), ~cx: float, ~cy: float, ~radius: float, ~startAngle: float, ~endAngle: float, ~anticlockwise:bool=?, unit) => Js.t('a) = "arc";
 
   /**
     The arcTo() method creates an arc/curve between two tangents on the canvas.
@@ -112,7 +112,7 @@ module Impl {
       @param radius The radius of the arc
    */
   [@bs.send]
-  external arcTo: (Js.t(#_t), ~x1: float, ~y1: float, ~x2: float, ~y2: float, ~radius: float) => Js.t(#_t) = "arcTo";
+  external arcTo: (Js.t(#_t as 'a), ~x1: float, ~y1: float, ~x2: float, ~y2: float, ~radius: float) => Js.t('a) = "arcTo";
 
   /**
     Specifies a simple one-color fill that subsequent calls to other Graphics methods (such as lineTo() or drawCircle()) use when drawing.
@@ -121,13 +121,13 @@ module Impl {
       @param alpha the alpha of the fill
    */
   [@bs.send]
-  external beginFill: (Js.t(#_t), ~color: int=?, ~alpha: float=?, unit) => Js.t(#_t) = "beginFill";
+  external beginFill: (Js.t(#_t as 'a), ~color: int=?, ~alpha: float=?, unit) => Js.t('a) = "beginFill";
 
   [@bs.send]
-  external beginHole: Js.t(#_t) => Js.t(#_t) = "beginHole";
+  external beginHole: Js.t(#_t as 'a) => Js.t('a) = "beginHole";
 
   [@bs.send]
-  external _beginTextureFill: (Js.t(#_t), ~options: 'a, unit) => Js.t(#_t) = "beginTextureFill";
+  external _beginTextureFill: (Js.t(#_t as 'a), ~options: 'o, unit) => Js.t('a) = "beginTextureFill";
 
   /**
     Begin the texture fill
@@ -147,26 +147,26 @@ module Impl {
       @param toY Destination point y
    */
   [@bs.send]
-  external bezierCurveTo: (Js.t(#_t), ~cpX: float, ~cpY: float, ~cpX2: float, ~cpY2: float, ~toX: float, ~toY: float) => Js.t(#_t) = "bezierCurveTo";
+  external bezierCurveTo: (Js.t(#_t as 'a), ~cpX: float, ~cpY: float, ~cpX2: float, ~cpY2: float, ~toX: float, ~toY: float) => Js.t('a) = "bezierCurveTo";
 
   /**
     Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
    */
   [@bs.send]
-  external clear: Js.t(#_t) => Js.t(#_t) = "clear";
+  external clear: Js.t(#_t as 'a) => Js.t('a) = "clear";
 
   /**
     Creates a new Graphics object with the same values as this one. 
     Note that the only the properties of the object are cloned, not its transform (position,scale,etc)
    */
   [@bs.send]
-  external clone: Js.t(#_t) => Js.t(#_t) = "clone";
+  external clone: Js.t(#_t as 'a) => Js.t('a) = "clone";
 
   /**
     Closes the current path.
    */
   [@bs.send]
-  external closePath: Js.t(#_t) => Js.t(#_t) = "closePath";
+  external closePath: Js.t(#_t as 'a) => Js.t('a) = "closePath";
 
   /**
     Tests if a point is inside this graphics object
@@ -184,7 +184,7 @@ module Impl {
       @param radius The radius of the circle
    */
   [@bs.send]
-  external drawCircle: (Js.t(#_t), ~x: float, ~y: float, ~radius: float) => Js.t(#_t) = "drawCircle";
+  external drawCircle: (Js.t(#_t as 'a), ~x: float, ~y: float, ~radius: float) => Js.t('a) = "drawCircle";
 
   /**
     Draws an ellipse.
@@ -195,7 +195,7 @@ module Impl {
       @param height The half height of the ellipse
    */
   [@bs.send]
-  external drawEllipse: (Js.t(#_t), ~x: float, ~y: float, ~width: float, ~height: float) => Js.t(#_t) = "drawEllipse";
+  external drawEllipse: (Js.t(#_t as 'a), ~x: float, ~y: float, ~width: float, ~height: float) => Js.t('a) = "drawEllipse";
 
   /**
     Draws a polygon using the given path.
@@ -203,11 +203,11 @@ module Impl {
       @param The path data used to construct the polygon.
    */
   [@bs.send]
-  external drawPolygon: (Js.t(#_t), [@bs.unwrap][
+  external drawPolygon: (Js.t(#_t as 'a), [@bs.unwrap][
     | `Array(array(float)) 
     | `Point(array(Point.t))
     | `Polygon(Polygon.t)
-  ]) => Js.t(#_t) = "drawPolygon"; 
+  ]) => Js.t('a) = "drawPolygon"; 
 
   /**
     Draws a rectangle shape.
@@ -218,7 +218,7 @@ module Impl {
       @param height The height of the rectangle
    */
   [@bs.send]
-  external drawRect: (Js.t(#_t), ~x: float, ~y: float, ~width: float, ~height: float) => Js.t(#_t) = "drawRect";
+  external drawRect: (Js.t(#_t as 'a), ~x: float, ~y: float, ~width: float, ~height: float) => Js.t('a) = "drawRect";
 
   /**
     Draws a rectangle shape.
@@ -230,7 +230,7 @@ module Impl {
       @param radius Radius of the rectangle corners
    */
   [@bs.send]
-  external drawRoundedRect: (Js.t(#_t), ~x: float, ~y: float, ~width: float, ~height: float, ~radius: float) => Js.t(#_t) = "drawRoundedRect";
+  external drawRoundedRect: (Js.t(#_t as 'a), ~x: float, ~y: float, ~width: float, ~height: float, ~radius: float) => Js.t('a) = "drawRoundedRect";
 
   /**
     Draw any shape.
@@ -238,13 +238,13 @@ module Impl {
       @param shape shape to draw
    */
   [@bs.send]
-  external drawShape: (Js.t(#_t), [@bs.unwrap][
+  external drawShape: (Js.t(#_t as 'a), [@bs.unwrap][
     | `Circle(Js.t(#Circle._t))
     | `Ellipse(Js.t(#Ellipse._t))
     | `Polygon(Js.t(#Polygon._t))
     | `Rectangle(Js.t(#Rectangle._t))
     | `RoundedRectangle(Js.t(#RoundedRectangle._t))
-  ]) => Js.t(#_t) = "drawShape";
+  ]) => Js.t('a) = "drawShape";
 
   /**
     Draw a star shape with an arbitrary number of points.
@@ -256,19 +256,19 @@ module Impl {
       @param innerRadius The inner radius between points, default half radius
       @param rotation The rotation of the star in radians, where 0 is vertical
    */
-  external drawStar: (Js.t(#_t), ~x: float, ~y: float, ~points: int, ~radius: float, ~innerRadius: float=?, ~rotation: float=?, unit) => Js.t(#_t) = "drawStar";
+  external drawStar: (Js.t(#_t as 'a), ~x: float, ~y: float, ~points: int, ~radius: float, ~innerRadius: float=?, ~rotation: float=?, unit) => Js.t('a) = "drawStar";
 
   /**
     Applies a fill to the lines and shapes that were added since the last call to the beginFill() method.
    */
   [@bs.send]
-  external endFill: Js.t(#_t) => Js.t(#_t) = "endFill";
+  external endFill: Js.t(#_t as 'a) => Js.t('a) = "endFill";
 
   /**
     End adding holes to the last draw shape
    */
   [@bs.send]
-  external endHole: Js.t(#_t) => Js.t(#_t) = "endHole";
+  external endHole: Js.t(#_t as 'a) => Js.t('a) = "endHole";
 
   /**
     Generates a canvas texture. 
@@ -287,10 +287,10 @@ module Impl {
     Specifies the line style used for subsequent calls to Graphics methods such as the lineTo() method or the drawCircle() method.
    */
   [@bs.send]
-  external lineStyle: (Js.t(#_t), ~width: float=?, ~color: int=?, ~alpha: float=?, ~alignment: float=?, ~native: bool=?, unit) => Js.t(#_t) = "lineStyle";
+  external lineStyle: (Js.t(#_t as 'a), ~width: float=?, ~color: int=?, ~alpha: float=?, ~alignment: float=?, ~native: bool=?, unit) => Js.t('a) = "lineStyle";
 
   [@bs.send]
-  external _lineStyleWithOptions: (Js.t(#_t), ~options:'a=?, unit) => Js.t(#_t) = "lineStyle";
+  external _lineStyleWithOptions: (Js.t(#_t as 'a), ~options:'o=?, unit) => Js.t('a) = "lineStyle";
 
   /**
     Specifies the line style used for subsequent calls to Graphics methods such 
@@ -298,7 +298,7 @@ module Impl {
    */
   let lineStyleWithOptions = (graphics, ~options=lineStyleOptions(()), ()) => graphics |. _lineStyleWithOptions(~options, ());
 
-  [@bs.send] external _lineTextureStyle: (Js.t(#_t), ~options: 'a=?, unit) => Js.t(#_t) = "lineTextureStyle";
+  [@bs.send] external _lineTextureStyle: (Js.t(#_t as 'a), ~options: 'o=?, unit) => Js.t('a) = "lineTextureStyle";
 
   /**
     Like line style but support texture for line fill.
@@ -313,7 +313,7 @@ module Impl {
       @param y the Y coordinate to draw to
    */
   [@bs.send]
-  external lineTo: (Js.t(#_t), ~x: float, ~y: float) => Js.t(#_t) = "lineTo";
+  external lineTo: (Js.t(#_t as 'a), ~x: float, ~y: float) => Js.t('a) = "lineTo";
 
   /**
     Moves the current drawing position to x, y.
@@ -322,7 +322,7 @@ module Impl {
       @param y the Y coordinate to move to
    */
   [@bs.send]
-  external moveTo: (Js.t(#_t), ~x: float, ~y: float) => Js.t(#_t) = "moveTo";
+  external moveTo: (Js.t(#_t as 'a), ~x: float, ~y: float) => Js.t('a) = "moveTo";
 
   /**
     Calculate the points for a quadratic bezier curve and then draws it.
@@ -333,7 +333,7 @@ module Impl {
       @param toY Destination point y
    */
   [@bs.send]
-  external quadraticCurveTo: (Js.t(#_t), ~cpX: float, ~cpY: float, ~toX: float, ~toY: float) => Js.t(#_t) = "quadraticCurveTo";
+  external quadraticCurveTo: (Js.t(#_t as 'a), ~cpX: float, ~cpY: float, ~toX: float, ~toY: float) => Js.t('a) = "quadraticCurveTo";
 
   /**
     Apply a matrix to the positional data.
@@ -341,7 +341,7 @@ module Impl {
       @param matrix Matrix to use for transform current shape.
    */
   [@bs.send]
-  external setMatrix: (Js.t(#_t), Js.t(#Matrix._t)) => Js.t(#_t) = "setMatrix";
+  external setMatrix: (Js.t(#_t as 'a), Js.t(#Matrix._t)) => Js.t('a) = "setMatrix";
 }
 
 include EventEmitter.Impl;

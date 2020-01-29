@@ -70,8 +70,8 @@ type t = Js.t(_t);
   ~sharedTicker: bool=?,
   ~sharedLoader: bool=?,
   ~autoStart: bool=?,
-  ~width: int=?,
-  ~height: int=?,
+  ~width: float=?,
+  ~height: float=?,
   ~view: Webapi.Dom.HtmlElement.t=?,
   ~transparent: bool=?,
   ~antialias: bool=?,
@@ -94,9 +94,64 @@ external registerPlugin: (Js.t({.. init: Js.t(#_t) => unit, destroy: Js.t(#_t) =
 
 module Impl {
   [@bs.module "pixi.js"][@bs.new]
-  external _create: (~options: 'a=?, unit) => Js.t(#_t) = "Application";
+  external _create: (~options: 'a=?, unit) => t = "Application";
 
   let create = (~options = createApplicationOptions(()), ()) => _create(~options, ());
+
+  /**
+    WebGL renderer if available, otherwise CanvasRenderer.
+   */
+  [@bs.get] external getRenderer: Js.t(#_t) => Js.t(#AbstractRenderer._t) = "renderer";
+
+  /**
+    WebGL renderer if available, otherwise CanvasRenderer.
+   */
+  [@bs.set] external setRenderer: (Js.t(#_t), Js.t(#AbstractRenderer._t)) => unit = "renderer";
+
+  /**
+    The window to resize the application to.
+   */
+  [@bs.get] external getResizeToWindow: Js.t(#_t) => Webapi.Dom.Window.t = "resizeTo";
+
+  /**
+    The element to resize the application to.
+   */
+  [@bs.get] external getResizeToElement: Js.t(#_t) => Webapi.Dom.Element.t = "resizeTo";
+
+  /**
+    The window or element to resize the application to.
+   */
+  [@bs.set] external setResizeTo: (Js.t(#_t), [@bs.unwrap][`Window(Webapi.Dom.Window.t) | `Element(Webapi.Dom.Element.t)]) => unit = "resizeTo";
+
+  /**
+    Reference to the renderer's screen rectangle. Its safe to use as filterArea or hitArea for the whole screen.
+   */
+  [@bs.get] external getScreen: Js.t(#_t) => Rectangle.t = "screen";
+
+  /**
+    The root display container that's rendered.
+   */
+  [@bs.get] external getStage: Js.t(#_t) => Js.t(#C.container) = "stage";
+
+  /**
+    The root display container that's rendered.
+   */
+  [@bs.set] external setStage: (Js.t(#_t), Js.t(#C.container)) => unit = "stage";
+
+  /**
+    Ticker for doing render updates.
+   */
+  [@bs.get] external getTicker: Js.t(#_t) => Js.t(#Ticker._t) = "ticker";
+
+  /**
+    Ticker for doing render updates.
+   */
+  [@bs.set] external setTicker: (Js.t(#_t), Js.t(#Ticker._t)) => unit = "ticker";
+
+  /**
+    Reference to the renderer's canvas element.
+   */
+  [@bs.get] external getView: Js.t(#_t) => Webapi.Dom.HtmlElement.t = "view";
 
   [@bs.send]
   external _destroy: (Js.t(#_t), ~removeView: bool=?, ~stageOptions: 'a=?, unit) => unit = "destroy";
