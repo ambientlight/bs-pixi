@@ -56,13 +56,14 @@ app
 let texture = PIXI.Texture.from(~source=`String("https://pixijs.io/examples/examples/assets/bunny.png"), ());
 
 // Create a 5x5 grid of bunnies
-for (i in 0 to 24) {
+Belt.Array.range(0, 24)
+|. Belt.Array.forEach(i => {
   let bunny = PIXI.Sprite.create(texture);
   bunny##anchor##set(0.5, 0.5);
   bunny |. PIXI.Sprite.setX(float_of_int((i mod 5) * 40));
   bunny |. PIXI.Sprite.setY(floor(float_of_int(i) /. 5.) *. 40.);
   container |. PIXI.Container.addChild(bunny) |> ignore;
-};
+});
 
 container |. PIXI.Container.setX(app##screen##width /. 2.);
 container |. PIXI.Container.setY(app##screen##height /. 2.);
