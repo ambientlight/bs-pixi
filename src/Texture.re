@@ -354,7 +354,8 @@ module Impl {
     | `HtmlImageElement(Webapi.Dom.HtmlImageElement.t)
     | `HtmlCanvasElement(Webapi.Dom.HtmlElement.t)
     | `HtmlVideoElement(Webapi.Dom.HtmlElement.t)
-    | `BaseTexture(BaseTexture.t)]=?, 
+    | `BaseTexture(BaseTexture.t)
+    | `Resource(Resource.t)]=?,
     ~options: 'a=?, 
     ~strict: bool=?, unit) => Js.t(#_t) = "from";
 
