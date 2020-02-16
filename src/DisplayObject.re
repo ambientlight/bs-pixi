@@ -409,7 +409,7 @@ module Impl {
         This means the calculation returned MAY be out of date BUT will give you a nice performance boost.
       @param rect Optional rectangle to store the result of the bounds calculation.
    */
-  [@bs.send] external getBounds: (Js.t(#C.displayObject), ~skipUpdate: bool=?, ~rect: Js.t(#Rectangle._t), unit) => Js.t(#Rectangle._t) = "getBounds";
+  [@bs.send] external getBounds: (Js.t(#C.displayObject), ~skipUpdate: bool=?, ~rect: Js.t(#Rectangle._t)=?, unit) => Js.t(#Rectangle._t) = "getBounds";
 
   /**
     Returns the global position of the displayObject. 
