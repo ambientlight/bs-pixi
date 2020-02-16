@@ -106,7 +106,7 @@ describe("VideoResource", () => {
   describe("VideoResource creation as object", () => {
     let resource =
       create(
-        ~source=`Object([|{src: "http://google.nl", mime: "video/mp4"}|]),
+        ~source=`Object([|VideoResource.sourceObject(~src="http://google.nl", ~mime="video/mp4")|]),
         ~options=
           createVideoResourceOptions(
             ~autoLoad=false,

@@ -3,6 +3,7 @@
  */
 type t = Js.t(C1.resource);
 
+[@bs.deriving abstract]
 type sourceObject = {
   src: string,
   mime: string,
