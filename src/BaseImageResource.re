@@ -9,8 +9,9 @@ module Impl = {
     (
       ~source: [@bs.unwrap] [
                  | `HTMLImageElement(Webapi.Dom.HtmlImageElement.t)
-                 | `HTMLCanvasElement(Webapi.Dom.Element.t)
-                 | `HTMLVideoElement(Webapi.Dom.Element.t)
+                 | `HTMLCanvasElement(Webapi.Dom.HtmlElement.t)
+                 | `HTMLVideoElement(Webapi.Dom.HtmlElement.t)
+                 | `SVGElement(Webapi.Dom.Element.t)
                ]
     ) =>
     t =

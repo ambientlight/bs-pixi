@@ -47,20 +47,24 @@ describe("BaseImageResource", () => {
   describe("Video Resource creation", () => {
     let video =
       Webapi.Dom.document |> Webapi.Dom.Document.createElement("video");
+    let videoElement = Webapi.Dom.HtmlElement.ofElement(video);
+    switch (videoElement) {
+    | None => ignore()
+    | Some(videoElement) =>
+      let resource = create(~source=`HTMLVideoElement(videoElement), ());
 
-    let resource = create(~source=`HTMLVideoElement(video), ());
+      test("check whether width is accurate", () => {
+        expect(resource |> getWidth) |> toBe(0.)
+      });
 
-    test("check whether width is accurate", () => {
-      expect(resource |> getWidth) |> toBe(0.)
-    });
+      test("check whether height is accurate", () => {
+        expect(resource |> getHeight) |> toBe(0.)
+      });
 
-    test("check whether height is accurate", () => {
-      expect(resource |> getHeight) |> toBe(0.)
-    });
-
-    test("check whether source is accurate", () => {
-      expect(resource |> getSource) |> toBe(video)
-    });
+      test("check whether source is accurate", () => {
+        expect(resource |> getSource) |> toBe(video)
+      });
+    };
   });
 
   ();
