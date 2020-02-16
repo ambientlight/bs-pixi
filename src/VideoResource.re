@@ -55,6 +55,12 @@ module Impl = {
   */
   [@bs.get]
   external getUpdateFPS: Js.t(#C1.resource) => int = "updateFPS";
+
+  /**
+    Start preloading the video resource.
+  */
+  [@bs.send]
+  external load: Js.t(#C1.resource) => unit = "load";
 };
 
 include BaseImageResource.Impl;
