@@ -2,9 +2,11 @@
 .merlin
 .bsb.lock
 npm-debug.log
+/lib/
 /lib/bs/
 /lib/js/
 /node_modules/
 /docs/PIXI/
 /bsdoc/
 .tgz
+/src/*.bs.js
