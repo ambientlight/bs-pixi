@@ -19,7 +19,7 @@ module Impl {
   /**
     The array of children of this container.
    */
-  [@bs.get] external getChildren: (Js.t(#C.container)) => array(Js.t(C.displayObject)) = "getChildren";
+  [@bs.get] external getChildren: (Js.t(#C.container)) => array(Js.t(C.displayObject)) = "children";
 
   /**
     The height of the Container, setting this will actually modify the scale to achieve the value set
