@@ -83,6 +83,7 @@ type t = Js.t(_t);
   ~roundPixels: bool=?,
   ~forceFXAA: bool=?,
   ~legacy: bool=?,
+  ~autoDensity: bool=?,
   unit
 ) => _ = "";
 
