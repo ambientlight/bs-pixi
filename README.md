@@ -4,7 +4,7 @@
 [![ISSUES](https://img.shields.io/github/issues/ambientlight/bs-pixi)](https://github.com/ambientlight/bs-pixi/issues)
 
 # bs-pixi
-BuckleScript bindings for [PixiJS v5](https://github.com/pixijs) (Work in progress)
+BuckleScript bindings for [PixiJS v6](https://github.com/pixijs/pixi.js) (Work in progress)
 
 Refer to [documentation](https://ambientlight.github.io/bs-pixi) for existing coverage.
 
