@@ -242,7 +242,7 @@ module Impl {
     Add a handler for the tick event which is only execute once.
   */
   [@bs.send]
-  external addOnce: (Js.t(#_t) as 'a, [@bs.uncurry](float => unit), ~context: 'b=?, ~priority: int=?, unit) => 'a = "add";
+  external addOnce: (Js.t(#_t) as 'a, [@bs.uncurry](float => unit), ~context: 'b=?, ~priority: int=?, unit) => 'a = "addOnce";
 
   /**
     Destroy the ticker and don't use after this. Calling this method removes all references to internal events.
