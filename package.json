@@ -34,7 +34,7 @@
         "reason-cli": "^3.3.3-macos-1"
     },
     "dependencies": {
-        "bs-webapi": "^0.15.5",
+        "bs-webapi": "0.19.1",
         "pixi.js": "^5.2.0"
     },
     "peerDependencies": {}
