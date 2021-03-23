@@ -35,7 +35,7 @@
     },
     "dependencies": {
         "bs-webapi": "^0.15.5",
-        "pixi.js": "^5.2.0"
+        "pixi.js": "6.0.0"
     },
     "peerDependencies": {}
 }
